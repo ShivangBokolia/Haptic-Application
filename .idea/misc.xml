@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_button_cond.xml" value="0.3625" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_five_button_cond.xml" value="0.264" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_five_gesture_cond.xml" value="0.3625" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_five_pattern_cond.xml" value="0.4" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_four_button_cond.xml" value="0.264" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_four_gesture_cond.xml" value="0.4" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_four_pattern_cond.xml" value="0.4" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_home_page.xml" value="0.3625" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_settings.xml" value="0.3625" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_three_gesture_cond.xml" value="0.4" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_three_pattern_cond.xml" value="0.4" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/participation.xml" value="0.3484375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

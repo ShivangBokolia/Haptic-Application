@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HapticApplication</string>
+    <string name="enter_you_particpant_id">Enter you particpant ID</string>
+    <string name="submit">SUBMIT</string>
+    <string name="home_page">HOME PAGE</string>
+    <string name="textview">TextView</string>
+</resources>
