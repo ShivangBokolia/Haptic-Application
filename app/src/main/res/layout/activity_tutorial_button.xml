@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ThreePatternCond">
+    tools:context=".TutorialButton">
 
     <TextView
-        android:id="@+id/dotDashAnswer"
+        android:id="@+id/buttonTutText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Dot Dash Button Condition"
+        android:layout_marginTop="48dp"
+        android:text="Buttons Condition"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -21,20 +21,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView16"
-        android:layout_width="342dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="24dp"
-        android:text="Click on the Generate button to start the vibration. Then, use the . and - buttons to input the felt vibration in the form of symbols."
+        android:id="@+id/textView12"
+        android:layout_width="330dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="20dp"
+        android:text="Click on Generate button to start the vibration. Then, choose the option based on the vibration you felt."
         android:textAlignment="center"
-        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dotDashAnswer" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonTutText" />
 
     <Button
-        android:id="@+id/threePatternGenButton"
+        android:id="@+id/buttonTuTGenButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -42,47 +42,51 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <Button
-        android:id="@+id/threeDotButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="48dp"
-        android:text="Dot"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/threePatternGenButton" />
-
-    <Button
-        android:id="@+id/threeDashButton"
+        android:id="@+id/opt1TutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="84dp"
-        android:text="Dash"
+        android:text="Option 1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/threePatternGenButton" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTuTGenButton" />
 
     <Button
-        android:id="@+id/threePatternNextButton"
+        android:id="@+id/opt2TutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="24dp"
+        android:text="Option 2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opt1TutButton" />
+
+    <Button
+        android:id="@+id/opt3TutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Option 3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opt2TutButton" />
+
+    <Button
+        android:id="@+id/buttonTutNextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:text="Next"
-        app:layout_constraintEnd_toStartOf="@+id/threePatternResettButton"
-        app:layout_constraintHorizontal_bias="0.556"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/threeDashButton" />
-
-    <Button
-        android:id="@+id/threePatternResettButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="84dp"
-        android:text="Reset"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/threeDashButton" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opt3TutButton"
+        app:layout_constraintVertical_bias="0.086" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

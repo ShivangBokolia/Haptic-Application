@@ -52,9 +52,19 @@ public class FiveGestureCond extends AppCompatActivity {
         Button resetButton = findViewById(R.id.fiveGestureResetButton);
         TextView gestureText = findViewById(R.id.fiveGestureText);
 
-        // Getting the three vibration pattern
-        // The number three is chosen at random:
-        answerPattern = getPattern.fivePatternOption(8);
+        if ( getPattern.getCounter() == 1) {
+            // Getting the three vibration pattern
+            // The number three is chosen at random:
+            answerPattern = getPattern.fivePatternOption(1);
+        } else if (getPattern.getCounter() == 2) {
+            // Getting the three vibration pattern
+            // The number 2 is chosen at random:
+            answerPattern = getPattern.fivePatternOption(2);
+        } else if (getPattern.getCounter() == 3) {
+            // Getting the three vibration pattern
+            // The number 3 is chosen at random:
+            answerPattern = getPattern.fivePatternOption(3);
+        }
         long[] convAnswerPattern = getPattern.convertPattern(answerPattern, shortVibrationTime, longVibrationTime);
 
         // Creating an array to store the pattern made by the user
@@ -99,95 +109,47 @@ public class FiveGestureCond extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (answerPattern.matches(getPattern.convertToDotDash(userCreatedPattern))) {
-                    gestureText.setText("Correct Answer");
-                } else {
-                    gestureText.setText("Wrong Answer");
+
+                // Same activity to be repeated again
+                if ((getPattern.getCounter() == 1 || getPattern.getCounter() == 2) && !getPattern.isFiveGesture()) {
+                    getPattern.incrementCounter();
+                    Intent sameActivity = new Intent(FiveGestureCond.this, FiveGestureCond.class);
+                    startActivity(sameActivity);
                 }
+                // Move on to a different activity
+                else if (getPattern.getCounter() == 3 && !getPattern.isFiveGesture()) {
+                    getPattern.resetCounter();
+                    getPattern.setFiveGesture(true);
 
-                if (randSettings.getFirstPage() == 5) {
-                    int nextPageVib = randSettings.getSecondPage();
-                    if (nextPageVib == 3) {
-                        Intent threeActivityIntent = new Intent(FiveGestureCond.this, ThreeGestureCond.class);
-                        startActivity(threeActivityIntent);
-                    } else if (nextPageVib == 4) {
-                        Intent fourActivityIntent = new Intent(FiveGestureCond.this, FourGestureCond.class);
-                        startActivity(fourActivityIntent);
+                    if (answerPattern.matches(getPattern.convertToDotDash(userCreatedPattern))) {
+                        gestureText.setText("Correct Answer");
+                    } else {
+                        gestureText.setText("Wrong Answer");
                     }
-                } else if (randSettings.getSecondPage() == 5) {
-                    int nextPageVib = randSettings.getThirdPage();
-                    if (nextPageVib == 3) {
-                        Intent threeActivityIntent = new Intent(FiveGestureCond.this, ThreeGestureCond.class);
-                        startActivity(threeActivityIntent);
-                    } else if (nextPageVib == 4) {
-                        Intent fourActivityIntent = new Intent(FiveGestureCond.this, FourGestureCond.class);
-                        startActivity(fourActivityIntent);
-                    }
-                } else if (randSettings.getThirdPage() == 5) {
 
-                    // Shuffle the vibration params again for the next activity
-                    randSettings.shufflePageParams();
-
-                    // This will find the SECOND activity
-                    if (randSettings.getFirstActivity().matches("Gesture")) {
-                        String nextActivity = randSettings.getSecondActivity();
-                        if (randSettings.getFirstPage() == 3) {
-                            if (nextActivity.matches("Button")) {
-                                Intent intentPattern = new Intent(FiveGestureCond.this, ButtonCond.class);
-                                startActivity(intentPattern);
-                            } else if (nextActivity.matches("Pattern")) {
-                                Intent intentGesture = new Intent(FiveGestureCond.this, ThreePatternCond.class);
-                                startActivity(intentGesture);
-                            }
-                        } else if (randSettings.getFirstPage() == 4) {
-                            if (nextActivity.matches("Button")) {
-                                Intent intentPattern = new Intent(FiveGestureCond.this, FourButtonCond.class);
-                                startActivity(intentPattern);
-                            } else if (nextActivity.matches("Pattern")) {
-                                Intent intentGesture = new Intent(FiveGestureCond.this, FourPatternCond.class);
-                                startActivity(intentGesture);
-                            }
-                        } else if (randSettings.getFirstPage() == 5) {
-                            if (nextActivity.matches("Button")) {
-                                Intent intentPattern = new Intent(FiveGestureCond.this, FiveButtonCond.class);
-                                startActivity(intentPattern);
-                            } else if (nextActivity.matches("Pattern")) {
-                                Intent intentGesture = new Intent(FiveGestureCond.this, FivePatternCond.class);
-                                startActivity(intentGesture);
-                            }
+                    if (randSettings.getFirstPage() == 5) {
+                        int nextPageVib = randSettings.getSecondPage();
+                        if (nextPageVib == 3) {
+                            Intent threeActivityIntent = new Intent(FiveGestureCond.this, ThreeGestureCond.class);
+                            startActivity(threeActivityIntent);
+                        } else if (nextPageVib == 4) {
+                            Intent fourActivityIntent = new Intent(FiveGestureCond.this, FourGestureCond.class);
+                            startActivity(fourActivityIntent);
                         }
-                    }
-                    // This will find the THIRD activity
-                    else if (randSettings.getSecondActivity().matches("Gesture")) {
-                        String nextActivity = randSettings.getThirdActivity();
-                        if (randSettings.getFirstPage() == 3) {
-                            if (nextActivity.matches("Button")) {
-                                Intent intentPattern = new Intent(FiveGestureCond.this, ButtonCond.class);
-                                startActivity(intentPattern);
-                            } else if (nextActivity.matches("Pattern")) {
-                                Intent intentGesture = new Intent(FiveGestureCond.this, ThreePatternCond.class);
-                                startActivity(intentGesture);
-                            }
-                        } else if (randSettings.getFirstPage() == 4) {
-                            if (nextActivity.matches("Button")) {
-                                Intent intentPattern = new Intent(FiveGestureCond.this, FourButtonCond.class);
-                                startActivity(intentPattern);
-                            } else if (nextActivity.matches("Pattern")) {
-                                Intent intentGesture = new Intent(FiveGestureCond.this, FourPatternCond.class);
-                                startActivity(intentGesture);
-                            }
-                        } else if (randSettings.getFirstPage() == 5) {
-                            if (nextActivity.matches("Button")) {
-                                Intent intentPattern = new Intent(FiveGestureCond.this, FiveButtonCond.class);
-                                startActivity(intentPattern);
-                            } else if (nextActivity.matches("Pattern")) {
-                                Intent intentGesture = new Intent(FiveGestureCond.this, FivePatternCond.class);
-                                startActivity(intentGesture);
-                            }
+                    } else if (randSettings.getSecondPage() == 5) {
+                        int nextPageVib = randSettings.getThirdPage();
+                        if (nextPageVib == 3) {
+                            Intent threeActivityIntent = new Intent(FiveGestureCond.this, ThreeGestureCond.class);
+                            startActivity(threeActivityIntent);
+                        } else if (nextPageVib == 4) {
+                            Intent fourActivityIntent = new Intent(FiveGestureCond.this, FourGestureCond.class);
+                            startActivity(fourActivityIntent);
                         }
+                    } else if (randSettings.getThirdPage() == 5) {
+
+                        Intent surveyIntent = new Intent(FiveGestureCond.this, GestureSurvey.class);
+                        startActivity(surveyIntent);
                     }
-                    // This will display the data of the user
-                    else if (randSettings.getThirdActivity().matches("Gesture")) {}
                 }
             }
         });

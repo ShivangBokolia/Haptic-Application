@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ThreePatternCond">
+    tools:context=".TutorialPattern">
 
     <TextView
-        android:id="@+id/dotDashAnswer"
+        android:id="@+id/dotDashTutAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -31,10 +31,10 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dotDashAnswer" />
+        app:layout_constraintTop_toBottomOf="@+id/dotDashTutAnswer" />
 
     <Button
-        android:id="@+id/threePatternGenButton"
+        android:id="@+id/patternTutGenButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -45,44 +45,44 @@
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <Button
-        android:id="@+id/threeDotButton"
+        android:id="@+id/dotTutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="48dp"
-        android:text="Dot"
+        android:text=" . "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/threePatternGenButton" />
+        app:layout_constraintTop_toBottomOf="@+id/patternTutGenButton" />
 
     <Button
-        android:id="@+id/threeDashButton"
+        android:id="@+id/dashTutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="84dp"
-        android:text="Dash"
+        android:text=" - "
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/threePatternGenButton" />
+        app:layout_constraintTop_toBottomOf="@+id/patternTutGenButton" />
 
     <Button
-        android:id="@+id/threePatternNextButton"
+        android:id="@+id/patternTutNextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:text="Next"
-        app:layout_constraintEnd_toStartOf="@+id/threePatternResettButton"
+        app:layout_constraintEnd_toStartOf="@+id/patternTutResetButton"
         app:layout_constraintHorizontal_bias="0.556"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/threeDashButton" />
+        app:layout_constraintTop_toBottomOf="@+id/dashTutButton" />
 
     <Button
-        android:id="@+id/threePatternResettButton"
+        android:id="@+id/patternTutResetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="84dp"
         android:text="Reset"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/threeDashButton" />
+        app:layout_constraintTop_toBottomOf="@+id/dashTutButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

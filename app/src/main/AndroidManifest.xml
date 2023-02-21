@@ -16,6 +16,24 @@
         android:theme="@style/Theme.HapticApplication"
         tools:targetApi="31">
         <activity
+            android:name=".GestureSurvey"
+            android:exported="false" />
+        <activity
+            android:name=".PatternSurvey"
+            android:exported="false" />
+        <activity
+            android:name=".ButtonSurvey"
+            android:exported="false" />
+        <activity
+            android:name=".TutorialGesture"
+            android:exported="false" />
+        <activity
+            android:name=".TutorialPattern"
+            android:exported="false" />
+        <activity
+            android:name=".TutorialButton"
+            android:exported="false" />
+        <activity
             android:name=".FiveGestureCond"
             android:exported="false" />
         <activity

@@ -6,6 +6,19 @@ import java.util.List;
 
 public class getPattern {
 
+    private int counter = 1;
+    private boolean threeButton = false;
+    private boolean fourButton = false;
+    private boolean fiveButton = false;
+
+    private boolean threeGesture = false;
+    private boolean fourGesture = false;
+    private boolean fiveGesture = false;
+
+    private boolean threePattern = false;
+    private boolean fourPattern = false;
+    private boolean fivePattern = false;
+
     List<String> patternSize3 = new ArrayList<String>() {{
         add("...");
         add("_..");
@@ -132,11 +145,89 @@ public class getPattern {
         StringBuilder textPattern = new StringBuilder();
         for (int i=0; i<pattern.length(); i++){
             if (pattern.charAt(i) == '.') {
-                textPattern.append("short");
+                textPattern.append("Dot ");
             } else if (pattern.charAt(i) == '_') {
-                textPattern.append("long");
+                textPattern.append("Dash ");
             }
         }
         return textPattern.toString();
+    }
+
+    public int getCounter() { return counter; }
+
+    public void incrementCounter() { counter += 1; }
+
+    public void resetCounter() { counter = 1; }
+
+    public boolean isThreeButton() {
+        return threeButton;
+    }
+
+    public void setThreeButton(boolean threeButton) {
+        this.threeButton = threeButton;
+    }
+
+    public boolean isFourButton() {
+        return fourButton;
+    }
+
+    public void setFourButton(boolean fourButton) {
+        this.fourButton = fourButton;
+    }
+
+    public boolean isFiveButton() {
+        return fiveButton;
+    }
+
+    public void setFiveButton(boolean fiveButton) {
+        this.fiveButton = fiveButton;
+    }
+
+    public boolean isThreeGesture() {
+        return threeGesture;
+    }
+
+    public void setThreeGesture(boolean threeGesture) {
+        this.threeGesture = threeGesture;
+    }
+
+    public boolean isFourGesture() {
+        return fourGesture;
+    }
+
+    public void setFourGesture(boolean fourGesture) {
+        this.fourGesture = fourGesture;
+    }
+
+    public boolean isFiveGesture() {
+        return fiveGesture;
+    }
+
+    public void setFiveGesture(boolean fiveGesture) {
+        this.fiveGesture = fiveGesture;
+    }
+
+    public boolean isThreePattern() {
+        return threePattern;
+    }
+
+    public void setThreePattern(boolean threePattern) {
+        this.threePattern = threePattern;
+    }
+
+    public boolean isFourPattern() {
+        return fourPattern;
+    }
+
+    public void setFourPattern(boolean fourPattern) {
+        this.fourPattern = fourPattern;
+    }
+
+    public boolean isFivePattern() {
+        return fivePattern;
+    }
+
+    public void setFivePattern(boolean fivePattern) {
+        this.fivePattern = fivePattern;
     }
 }

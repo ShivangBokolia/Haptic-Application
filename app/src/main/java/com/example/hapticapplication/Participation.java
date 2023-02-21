@@ -17,7 +17,7 @@ import java.util.Set;
 public class Participation extends AppCompatActivity {
 
     Button settingsButton;
-    Button mainStudyButton;
+    Button mainStudyButton, tutorialButton;
     EditText idText;
 
     String id = "";
@@ -30,6 +30,7 @@ public class Participation extends AppCompatActivity {
         idText = findViewById(R.id.partID);
         settingsButton = findViewById(R.id.settings);
         mainStudyButton = findViewById(R.id.mainStudy);
+        tutorialButton = findViewById(R.id.tutorial);
 
         randSettings randSettings = com.example.hapticapplication.randSettings.getInstance();
 
@@ -102,6 +103,14 @@ public class Participation extends AppCompatActivity {
                         }
                     }
                 }
+            }
+        });
+
+        tutorialButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Participation.this, TutorialButton.class);
+                startActivity(intent);
             }
         });
     }

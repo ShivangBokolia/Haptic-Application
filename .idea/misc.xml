@@ -4,16 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_button_cond.xml" value="0.3625" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_button_survey.xml" value="0.3625" />
         <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_five_button_cond.xml" value="0.264" />
         <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_five_gesture_cond.xml" value="0.3625" />
         <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_five_pattern_cond.xml" value="0.4" />
         <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_four_button_cond.xml" value="0.264" />
         <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_four_gesture_cond.xml" value="0.4" />
         <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_four_pattern_cond.xml" value="0.4" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_gesture_survey.xml" value="0.3484375" />
         <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_home_page.xml" value="0.3625" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_pattern_survey.xml" value="0.3484375" />
         <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_settings.xml" value="0.3625" />
         <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_three_gesture_cond.xml" value="0.4" />
-        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_three_pattern_cond.xml" value="0.4" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_three_pattern_cond.xml" value="0.24166666666666667" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_tutorial_button.xml" value="0.3625" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_tutorial_gesture.xml" value="0.3484375" />
+        <entry key="..\:/RIT/Palavi/app/src/main/res/layout/activity_tutorial_pattern.xml" value="0.3484375" />
         <entry key="..\:/RIT/Palavi/app/src/main/res/layout/participation.xml" value="0.3484375" />
       </map>
     </option>

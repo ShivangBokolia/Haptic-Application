@@ -24,6 +24,7 @@ public class randSettings {
 
     // Getting the first, second and third activity
     public String getFirstActivity() {
+        // return "Gesture";
         return randomActivity.get(0);
     }
     public String getSecondActivity() { return randomActivity.get(1); }
@@ -31,6 +32,7 @@ public class randSettings {
 
     // Getting the first, second and third vibration number
     public Integer getFirstPage() {
+        // return 3;
         return randomPatternPerPage.get(0);
     }
     public Integer getSecondPage() {
