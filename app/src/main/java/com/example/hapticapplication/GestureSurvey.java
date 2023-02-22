@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,8 +21,29 @@ public class GestureSurvey extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                HapticCommon.inputConditionCount++;
+                if (HapticCommon.inputConditionCount>2){
+                    //go to Qual answers
+                    Intent surveyIntent = new Intent(GestureSurvey.this, QualAns.class);
+                    startActivity(surveyIntent);
+                }else{
+                    HapticCommon.patternConditionCount=0;
+                    int condition=HapticCommon.inputConditionArray[HapticCommon.inputConditionCount];
+                    if (condition==1){
+                        Intent surveyIntent = new Intent(GestureSurvey.this, ThreeGestureCond.class);
+                        startActivity(surveyIntent);
+                    }
+                    if (condition==2){
+                        Intent surveyIntent = new Intent(GestureSurvey.this, ThreePatternCond.class);
+                        startActivity(surveyIntent);
+                    }
+                    if (condition==3){
+                        Intent surveyIntent = new Intent(GestureSurvey.this, FourButtonCond.class);
+                        startActivity(surveyIntent);
+                    }
+                }
                 // Shuffle the vibration params again for the next activity
-                randSettings.shufflePageParams();
+                /*randSettings.shufflePageParams();
 
                 // This will find the SECOND activity
                 if (randSettings.getFirstActivity().matches("Gesture")) {
@@ -83,7 +105,7 @@ public class GestureSurvey extends AppCompatActivity {
                     }
                 }
                 // This will display the data of the user
-                else if (randSettings.getThirdActivity().matches("Gesture")) {}
+                else if (randSettings.getThirdActivity().matches("Gesture")) {}*/
             }
         });
     }

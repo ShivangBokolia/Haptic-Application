@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -36,7 +37,7 @@ public class ThreeGestureCond extends AppCompatActivity {
 
         // Creating a vibrator object for the vibrations
         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
+        Log.e("view","threeGesture");
         // Getting the instance for the patterns and vibration settings
         randSettings randSettings = com.example.hapticapplication.randSettings.getInstance();
         getPattern getPattern = com.example.hapticapplication.getPattern.getInstance();
@@ -52,19 +53,56 @@ public class ThreeGestureCond extends AppCompatActivity {
         Button nextButton = findViewById(R.id.threeGestureNextButton);
         Button resetButton = findViewById(R.id.threeGestureResetButton);
         TextView gestureText = findViewById(R.id.threeGestureText);
+        int patternCondition=HapticCommon.patternConditionArray[HapticCommon.patternConditionCount];
+        if (patternCondition==3){
+            Log.e("GestureTest",String.valueOf(patternCondition));
+            if ( getPattern.getCounter() == 1) {
+                // Getting the three vibration pattern
+                // The number three is chosen at random:
+                answerPattern = getPattern.threePatternOption(1);
+            } else if (getPattern.getCounter() == 2) {
+                // Getting the three vibration pattern
+                // The number 2 is chosen at random:
+                answerPattern = getPattern.threePatternOption(2);
+            } else if (getPattern.getCounter() == 3) {
+                // Getting the three vibration pattern
+                // The number 3 is chosen at random:
+                answerPattern = getPattern.threePatternOption(3);
+            }
+        }
 
-        if ( getPattern.getCounter() == 1) {
-            // Getting the three vibration pattern
-            // The number three is chosen at random:
-            answerPattern = getPattern.threePatternOption(1);
-        } else if (getPattern.getCounter() == 2) {
-            // Getting the three vibration pattern
-            // The number 2 is chosen at random:
-            answerPattern = getPattern.threePatternOption(2);
-        } else if (getPattern.getCounter() == 3) {
-            // Getting the three vibration pattern
-            // The number 3 is chosen at random:
-            answerPattern = getPattern.threePatternOption(3);
+        if (patternCondition==4){
+            Log.e("GestureTest",String.valueOf(patternCondition));
+            if ( getPattern.getCounter() == 1) {
+                // Getting the three vibration pattern
+                // The number three is chosen at random:
+                answerPattern = getPattern.fourPatternOption(1);
+            } else if (getPattern.getCounter() == 2) {
+                // Getting the three vibration pattern
+                // The number 2 is chosen at random:
+                answerPattern = getPattern.fourPatternOption(2);
+            } else if (getPattern.getCounter() == 3) {
+                // Getting the three vibration pattern
+                // The number 3 is chosen at random:
+                answerPattern = getPattern.fourPatternOption(3);
+            }
+        }
+
+        if (patternCondition==5){
+            Log.e("GestureTest",String.valueOf(patternCondition));
+            if ( getPattern.getCounter() == 1) {
+                // Getting the five vibration pattern
+                // The number 1 is chosen at random:
+                answerPattern = getPattern.fivePatternOption(1);
+            } else if (getPattern.getCounter() == 2) {
+                // Getting the five vibration pattern
+                // The number 2 is chosen at random:
+                answerPattern = getPattern.fivePatternOption(2);
+            } else if (getPattern.getCounter() == 3) {
+                // Getting the five vibration pattern
+                // The number 3 is chosen at random:
+                answerPattern = getPattern.fivePatternOption(3);
+            }
         }
 
 
@@ -92,19 +130,24 @@ public class ThreeGestureCond extends AppCompatActivity {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     startTime = SystemClock.elapsedRealtime();
+                    vb.vibrate(10000); // 10 seconds
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    vb.cancel();
                     endTime = SystemClock.elapsedRealtime();
                 }
                 float totalTime = ((float) endTime - (float) startTime)/1000;
                 if (totalTime > 0) {
-                    if (totalTime > 0.8) {
+                    if (totalTime > 0.5) {
                         userCreatedPattern.add("Dash");
                     } else {
                         userCreatedPattern.add("Dot");
                     }
+                    Log.e("userAns",String.valueOf(userCreatedPattern));
                 }
+
                 return true;
             }
         });
@@ -120,8 +163,18 @@ public class ThreeGestureCond extends AppCompatActivity {
                     startActivity(sameActivity);
                 }
                 // Move on to a different activity
-                else if (getPattern.getCounter() == 3 && !getPattern.isThreeGesture()) {
+                else if (getPattern.getCounter() == 3) {
                     getPattern.resetCounter();
+                    HapticCommon.patternConditionCount++;
+                    if (HapticCommon.patternConditionCount>2){
+                        Intent surveyIntent = new Intent(ThreeGestureCond.this, GestureSurvey.class);
+                        startActivity(surveyIntent);
+                    }else{
+                        Intent intent = new Intent(ThreeGestureCond.this, ThreeGestureCond.class);
+                        startActivity(intent);
+                    }
+
+                    /*getPattern.resetCounter();
                     // Marking activity as done
                     getPattern.setThreeGesture(true);
 
@@ -152,7 +205,7 @@ public class ThreeGestureCond extends AppCompatActivity {
                     } else if (randSettings.getThirdPage() == 3) {
                         Intent surveyIntent = new Intent(ThreeGestureCond.this, GestureSurvey.class);
                         startActivity(surveyIntent);
-                    }
+                    }*/
                 }
             }
         });

@@ -67,7 +67,6 @@ public class Settings extends AppCompatActivity {
             public void onClick(View v) {
                 // Setting the vibration value globally
                 vibSettings.setData(timing);
-
                 Intent intent = new Intent(Settings.this, Participation.class);
                 startActivity(intent);
             }

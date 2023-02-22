@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -52,27 +53,85 @@ public class FourButtonCond extends AppCompatActivity {
         StringBuilder option1Pattern = new StringBuilder();
         StringBuilder option2Pattern = new StringBuilder();
 
-        if (getPattern.getCounter() == 1) {
-            // Generating the answer pattern of length 4 for generate button and option 3.
-            // Generating random patterns for option 1 and option 2
-            answerPattern.append(getPattern.fourPatternOption(1));
-            option1Pattern.append(getPattern.fourPatternOption(2));
-            option2Pattern.append(getPattern.fourPatternOption(3));
-        } else if (getPattern.getCounter() == 2) {
-            // Generating the answer pattern of length 4 for generate button and option 3.
-            // Generating random patterns for option 1 and option 2
-            answerPattern.append(getPattern.fourPatternOption(4));
-            option1Pattern.append(getPattern.fourPatternOption(5));
-            option2Pattern.append(getPattern.fourPatternOption(6));
-        } else if (getPattern.getCounter() == 3) {
-            // Generating the answer pattern of length 4 for generate button and option 3.
-            // Generating random patterns for option 1 and option 2
-            answerPattern.append(getPattern.fourPatternOption(7));
-            option1Pattern.append(getPattern.fourPatternOption(8));
-            option2Pattern.append(getPattern.fourPatternOption(9));
+        int patternCondition=HapticCommon.patternConditionArray[HapticCommon.patternConditionCount];
+        if (patternCondition==3) {
+            Log.e("ButtonTest", String.valueOf(patternCondition));
+            if (getPattern.getCounter() == 1) {
+                Log.e("3", "1");
+                // Generating the answer pattern of length 4 for generate button and option 3.
+                // Generating random patterns for option 1 and option 2
+                answerPattern.append(getPattern.threePatternOption(0));
+                option1Pattern.append(getPattern.threePatternOption(1));
+                option2Pattern.append(getPattern.threePatternOption(2));
+            } else if (getPattern.getCounter() == 2) {
+                Log.e("3", "2");
+                // Generating the answer pattern of length 4 for generate button and option 3.
+                // Generating random patterns for option 1 and option 2
+                answerPattern.append(getPattern.threePatternOption(3));
+                option1Pattern.append(getPattern.threePatternOption(4));
+                option2Pattern.append(getPattern.threePatternOption(5));
+            } else if (getPattern.getCounter() == 3) {
+                Log.e("3", "3");
+                // Generating the answer pattern of length 4 for generate button and option 3.
+                // Generating random patterns for option 1 and option 2
+                answerPattern.append(getPattern.threePatternOption(6));
+                option1Pattern.append(getPattern.threePatternOption(7));
+                option2Pattern.append(getPattern.threePatternOption(5));
+            }
         }
 
-        // Setting the texts for the buttons
+        if (patternCondition==4) {
+            Log.e("ButtonTest", String.valueOf(patternCondition));
+            if (getPattern.getCounter() == 1) {
+                Log.e("4", "1");
+                // Generating the answer pattern of length 4 for generate button and option 3.
+                // Generating random patterns for option 1 and option 2
+                answerPattern.append(getPattern.fourPatternOption(0));
+                option1Pattern.append(getPattern.fourPatternOption(1));
+                option2Pattern.append(getPattern.fourPatternOption(2));
+            } else if (getPattern.getCounter() == 2) {
+                Log.e("4", "2");
+                // Generating the answer pattern of length 4 for generate button and option 3.
+                // Generating random patterns for option 1 and option 2
+                answerPattern.append(getPattern.fourPatternOption(3));
+                option1Pattern.append(getPattern.fourPatternOption(4));
+                option2Pattern.append(getPattern.fourPatternOption(5));
+            } else if (getPattern.getCounter() == 3) {
+                Log.e("4", "3");
+                // Generating the answer pattern of length 4 for generate button and option 3.
+                // Generating random patterns for option 1 and option 2
+                answerPattern.append(getPattern.fourPatternOption(6));
+                option1Pattern.append(getPattern.fourPatternOption(7));
+                option2Pattern.append(getPattern.fourPatternOption(5));
+            }
+        }
+        if (patternCondition==5) {
+            Log.e("ButtonTest", String.valueOf(patternCondition));
+            if (getPattern.getCounter() == 1) {
+                Log.e("5", "1");
+                // Generating the answer pattern of length 5 for generate button and option 3.
+                // Generating random patterns for option 1 and option 2
+                answerPattern.append(getPattern.fivePatternOption(0));
+                option1Pattern.append(getPattern.fivePatternOption(1));
+                option2Pattern.append(getPattern.fivePatternOption(2));
+            } else if (getPattern.getCounter() == 2) {
+                Log.e("5", "2");
+                // Generating the answer pattern of length 5 for generate button and option 3.
+                // Generating random patterns for option 1 and option 2
+                answerPattern.append(getPattern.fivePatternOption(3));
+                option1Pattern.append(getPattern.fivePatternOption(4));
+                option2Pattern.append(getPattern.fivePatternOption(5));
+            } else if (getPattern.getCounter() == 3) {
+                Log.e("5", "3");
+                // Generating the answer pattern of length 5 for generate button and option 3.
+                // Generating random patterns for option 1 and option 2
+                answerPattern.append(getPattern.fivePatternOption(6));
+                option1Pattern.append(getPattern.fivePatternOption(7));
+                option2Pattern.append(getPattern.fivePatternOption(5));
+            }
+        }
+
+            // Setting the texts for the buttons
         option1Button.setText(getPattern.convertPatternToText(option1Pattern.toString()));
         option2Button.setText(getPattern.convertPatternToText(option2Pattern.toString()));
         option3Button.setText(getPattern.convertPatternToText(answerPattern.toString()));
@@ -129,7 +188,18 @@ public class FourButtonCond extends AppCompatActivity {
                 }
                 // Move to the next activity
                 else if (getPattern.getCounter() == 3 && !getPattern.isFourButton()) {
+
                     getPattern.resetCounter();
+                    HapticCommon.patternConditionCount++;
+                    if (HapticCommon.patternConditionCount>2){
+                        Intent surveyIntent = new Intent(FourButtonCond.this, GestureSurvey.class);
+                        startActivity(surveyIntent);
+                    }else{
+                        Intent intent = new Intent(FourButtonCond.this, FourButtonCond.class);
+                        startActivity(intent);
+                    }
+
+                    /*getPattern.resetCounter();
                     getPattern.setFourButton(true);
 
                     // This will find the SECOND page for the activities.
@@ -158,7 +228,7 @@ public class FourButtonCond extends AppCompatActivity {
                     else if (randSettings.getThirdPage() == 4) {
                         Intent surveyIntent = new Intent(FourButtonCond.this, ButtonSurvey.class);
                         startActivity(surveyIntent);
-                    }
+                    }*/
                 }
             }
         });
