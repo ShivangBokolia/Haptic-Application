@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class randSettings {
+public class AADataRandSettings {
 
     List<Integer> randomPatternPerPage = new ArrayList<Integer>() {{add(3); add(4); add(5);}};
     List<String> randomActivity = new ArrayList<String>() {{add("Button"); add("Gesture"); add("Pattern");}};
 
 
-    private static randSettings randInstance = new randSettings();
-    public static randSettings getInstance() { return randInstance; }
+    private static AADataRandSettings randInstance = new AADataRandSettings();
+    public static AADataRandSettings getInstance() { return randInstance; }
 
-    private randSettings() {}
+    private AADataRandSettings() {}
 
     // Randomizing the vibration number
     public void shufflePageParams() {

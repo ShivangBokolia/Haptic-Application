@@ -30,8 +30,8 @@ public class TutorialPattern extends AppCompatActivity {
         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         // Getting the instance for the patterns and vibration settings
-        randSettings randSettings = com.example.hapticapplication.randSettings.getInstance();
-        getPattern getPattern = com.example.hapticapplication.getPattern.getInstance();
+        AADataRandSettings randSettings = AADataRandSettings.getInstance();
+        AADataGetPattern getPattern = AADataGetPattern.getInstance();
         vibSettings vibSettings = com.example.hapticapplication.vibSettings.getInstance();
 
         // Setting the timings for short vibrations and long vibrations

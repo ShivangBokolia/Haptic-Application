@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ThreeGestureCond">
+    tools:context=".AAInputGesture">
 
     <Button
         android:id="@+id/threeGestureResetButton"
@@ -36,11 +36,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/tvCounter"
         android:layout_width="347dp"
         android:layout_height="37dp"
         android:layout_marginTop="20dp"
-        android:text="Experiment 1 of 27"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -59,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCounter" />
 
     <Button
         android:id="@+id/threeGestureInputButton"
@@ -72,7 +71,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gestureInput" />
+        app:layout_constraintTop_toBottomOf="@+id/tvinput" />
 
     <Button
         android:id="@+id/threeGestureNextButton"
@@ -91,7 +90,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/gestureInput"
+        android:id="@+id/tvinput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"

@@ -16,7 +16,7 @@
         android:theme="@style/Theme.HapticApplication"
         tools:targetApi="31">
         <activity
-            android:name=".QualAns"
+            android:name=".AAHapticMainQualAns"
             android:exported="false"
             android:label="@string/title_activity_qual_ans"
             android:theme="@style/Theme.HapticApplication.NoActionBar" />
@@ -45,7 +45,7 @@
             android:name=".FourGestureCond"
             android:exported="false" />
         <activity
-            android:name=".ThreeGestureCond"
+            android:name=".AAInputGesture"
             android:exported="false" />
         <activity
             android:name=".FivePatternCond"
@@ -54,25 +54,25 @@
             android:name=".FourPatternCond"
             android:exported="false" />
         <activity
-            android:name=".ThreePatternCond"
+            android:name=".AAInputPattern"
             android:exported="false" />
         <activity
             android:name=".FiveButtonCond"
             android:exported="false" />
         <activity
-            android:name=".FourButtonCond"
+            android:name=".AAInputButton"
             android:exported="false" />
         <activity
             android:name=".ButtonCond"
             android:exported="false" />
         <activity
-            android:name=".Settings"
+            android:name=".AAHapticMainSettings"
             android:exported="false" />
         <activity
             android:name=".HomePage"
             android:exported="false" />
         <activity
-            android:name=".Participation"
+            android:name=".AAHapticMainPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

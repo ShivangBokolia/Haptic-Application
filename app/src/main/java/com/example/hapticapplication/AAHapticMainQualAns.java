@@ -3,8 +3,6 @@ package com.example.hapticapplication;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
@@ -13,26 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.hapticapplication.databinding.ActivityQualAnsBinding;
-
 import java.util.Calendar;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-
-import java.util.Calendar;
-
-public class QualAns extends AppCompatActivity {
+public class AAHapticMainQualAns extends AppCompatActivity {
     Button bSubmit;
 
     EditText ETQ1;
@@ -60,15 +41,15 @@ public class QualAns extends AppCompatActivity {
         bSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String fileWriteString="1.6,mainStudyTLX,QualAnswers,"+HapticCommon.dateTime()+","+String.valueOf(startTime)+","+String.valueOf(Calendar.getInstance().getTimeInMillis())+","
+                String fileWriteString="0.0,mainStudyTLX,QualAnswers,"+ AAHapticCommon.dateTime()+","+String.valueOf(startTime)+","+String.valueOf(Calendar.getInstance().getTimeInMillis())+","
                         +ETQ1.getText()+","
                         +ETQ2.getText()+","
                         +ETQ3.getText()+","
                         +ETQ3.getText()+","
                         +"\n";
-                HapticCommon.writeAnswerToFile(getApplicationContext(),fileWriteString);
-                HapticCommon.inputConditionCount=0;
-                HapticCommon.patternConditionCount=0;
+                AAHapticCommon.writeAnswerToFile(getApplicationContext(),fileWriteString);
+                AAHapticCommon.inputConditionCount=0;
+                AAHapticCommon.patternConditionCount=0;
                 sendEmail();
                 //addToBundleAndOpenActivity(QualAns.class);
 
@@ -79,13 +60,13 @@ public class QualAns extends AppCompatActivity {
 
     }
     void addToBundleAndOpenActivity(Class cls){
-        Intent intent = new Intent(QualAns.this, cls);
+        Intent intent = new Intent(AAHapticMainQualAns.this, cls);
         finish();
         startActivity(intent);
     }
     void sendEmail(){
         getIntent().addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);  getIntent().addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-        HapticCommon.sendEmail(this);
+        AAHapticCommon.sendEmail(this);
     }
 
     void setETListner(final EditText et, final EditText nextET){

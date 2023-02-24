@@ -34,8 +34,8 @@ public class FivePatternCond extends AppCompatActivity {
         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         // Getting the instance for the patterns and vibration settings
-        randSettings randSettings = com.example.hapticapplication.randSettings.getInstance();
-        getPattern getPattern = com.example.hapticapplication.getPattern.getInstance();
+        AADataRandSettings randSettings = AADataRandSettings.getInstance();
+        AADataGetPattern getPattern = AADataGetPattern.getInstance();
         vibSettings vibSettings = com.example.hapticapplication.vibSettings.getInstance();
 
         // Setting the timings for short vibrations and long vibrations
@@ -137,7 +137,7 @@ public class FivePatternCond extends AppCompatActivity {
                     if (randSettings.getFirstPage() == 5) {
                         int nextPageVib = randSettings.getSecondPage();
                         if (nextPageVib == 3) {
-                            Intent threeActivityIntent = new Intent(FivePatternCond.this, ThreePatternCond.class);
+                            Intent threeActivityIntent = new Intent(FivePatternCond.this, AAInputPattern.class);
                             startActivity(threeActivityIntent);
                         } else if (nextPageVib == 4) {
                             Intent fourActivityIntent = new Intent(FivePatternCond.this, FourPatternCond.class);
@@ -146,7 +146,7 @@ public class FivePatternCond extends AppCompatActivity {
                     } else if (randSettings.getSecondPage() == 5) {
                         int nextPageVib = randSettings.getThirdPage();
                         if (nextPageVib == 3) {
-                            Intent threeActivityIntent = new Intent(FivePatternCond.this, ThreePatternCond.class);
+                            Intent threeActivityIntent = new Intent(FivePatternCond.this, AAInputPattern.class);
                             startActivity(threeActivityIntent);
                         } else if (nextPageVib == 4) {
                             Intent fourActivityIntent = new Intent(FivePatternCond.this, FourPatternCond.class);

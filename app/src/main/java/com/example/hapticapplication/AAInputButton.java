@@ -1,5 +1,7 @@
 package com.example.hapticapplication;
 
+import static java.lang.String.valueOf;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,15 +14,23 @@ import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 // TODO: Check if the user pressed the correct answer
 // TODO: Save the answer provided by the user
 
-public class FourButtonCond extends AppCompatActivity {
+public class AAInputButton extends AppCompatActivity {
+    long startTime=0;
+    int generatePresses=0;
+    String selectedpattern="";
+    StringBuilder answerPattern = new StringBuilder();
+    StringBuilder option1Pattern = new StringBuilder();
+    StringBuilder option2Pattern = new StringBuilder();
+    AADataGetPattern getPattern = AADataGetPattern.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +44,13 @@ public class FourButtonCond extends AppCompatActivity {
         List<String> selectedAnswer = new ArrayList<>();
 
         // Getting the instance for the patterns and vibration settings
-        randSettings randSettings = com.example.hapticapplication.randSettings.getInstance();
-        getPattern getPattern = com.example.hapticapplication.getPattern.getInstance();
+        AADataRandSettings randSettings = AADataRandSettings.getInstance();
         vibSettings vibSettings = com.example.hapticapplication.vibSettings.getInstance();
 
         // Setting the timings for short vibrations and long vibrations
         int shortVibrationTime = vibSettings.getData();
         int longVibrationTime = vibSettings.getData() * 3;
+
 
         // Making the object for the buttons
         Button generateButton = findViewById(R.id.fourGenButton);
@@ -49,11 +59,17 @@ public class FourButtonCond extends AppCompatActivity {
         Button option3Button = findViewById(R.id.fourOpt3Button);
         Button nextButton = findViewById(R.id.fourButtonNextButton);
 
-        StringBuilder answerPattern = new StringBuilder();
-        StringBuilder option1Pattern = new StringBuilder();
-        StringBuilder option2Pattern = new StringBuilder();
 
-        int patternCondition=HapticCommon.patternConditionArray[HapticCommon.patternConditionCount];
+        int patternCondition= AAHapticCommon.patternList.get(AAHapticCommon.patternConditionCount);
+
+        Log.e("PattersGesture",String.valueOf(AAHapticCommon.patternList));
+
+        TextView counterTV=findViewById(R.id.tvCounter);
+        int count=getPattern.getCounter()+3*(AAHapticCommon.inputConditionCount*3+ AAHapticCommon.patternConditionCount);
+        Log.e("Counter:", String.valueOf(getPattern.getCounter())+","+String.valueOf(AAHapticCommon.inputConditionCount)+","+String.valueOf(AAHapticCommon.patternConditionCount));
+        counterTV.setText("Trial No.: "+String.valueOf(count)+"/27");//+String.valueOf(patternCondition));
+
+
         if (patternCondition==3) {
             Log.e("ButtonTest", String.valueOf(patternCondition));
             if (getPattern.getCounter() == 1) {
@@ -145,6 +161,9 @@ public class FourButtonCond extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
+                startTime=Calendar.getInstance().getTimeInMillis();
+                generatePresses++;
+                writeAns("1.3","selection","GenerateButton","Button");
                 final VibrationEffect generateVibration;
                 generateVibration = VibrationEffect.createWaveform(convPattern, VibrationEffect.DEFAULT_AMPLITUDE);
 
@@ -157,7 +176,9 @@ public class FourButtonCond extends AppCompatActivity {
         option1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedAnswer.add(option1Pattern.toString());
+                selectedpattern=option1Pattern.toString();
+                writeAns("1.3","selection",selectedpattern,"button");
+
             }
         });
 
@@ -165,7 +186,8 @@ public class FourButtonCond extends AppCompatActivity {
         option2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedAnswer.add(option2Pattern.toString());
+                selectedpattern=option2Pattern.toString();
+                writeAns("1.3","selection",selectedpattern,"button");
             }
         });
 
@@ -173,7 +195,8 @@ public class FourButtonCond extends AppCompatActivity {
         option3Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedAnswer.add(answerPattern.toString());
+                selectedpattern=(answerPattern.toString());
+                writeAns("1.3","selection",selectedpattern,"button");
             }
         });
 
@@ -181,21 +204,24 @@ public class FourButtonCond extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Repeat the same activity
+                writeAns("2.,1","final",selectedpattern,"button");
                 if ((getPattern.getCounter() == 1 || getPattern.getCounter() == 2) && !getPattern.isFourButton()) {
                     getPattern.incrementCounter();
-                    Intent sameActivity = new Intent(FourButtonCond.this, FourButtonCond.class);
+                    Intent sameActivity = new Intent(AAInputButton.this, AAInputButton.class);
                     startActivity(sameActivity);
                 }
                 // Move to the next activity
                 else if (getPattern.getCounter() == 3 && !getPattern.isFourButton()) {
 
                     getPattern.resetCounter();
-                    HapticCommon.patternConditionCount++;
-                    if (HapticCommon.patternConditionCount>2){
-                        Intent surveyIntent = new Intent(FourButtonCond.this, GestureSurvey.class);
+
+                    AAHapticCommon.patternConditionCount++;
+                    if (AAHapticCommon.patternConditionCount>2){
+                        AAHapticCommon.shufflePatternList();
+                        Intent surveyIntent = new Intent(AAInputButton.this, GestureSurvey.class);
                         startActivity(surveyIntent);
                     }else{
-                        Intent intent = new Intent(FourButtonCond.this, FourButtonCond.class);
+                        Intent intent = new Intent(AAInputButton.this, AAInputButton.class);
                         startActivity(intent);
                     }
 
@@ -232,5 +258,11 @@ public class FourButtonCond extends AppCompatActivity {
                 }
             }
         });
+
+    }
+    private void writeAns(String index, String tag, String selectedOption, String inputType){
+        String fileWriteString=index+","+getPattern.getCounter()+inputType+tag+","+ AAHapticCommon.dateTime()+","+valueOf(startTime)+","+valueOf(Calendar.getInstance().getTimeInMillis())+","+valueOf(generatePresses)+","+answerPattern.toString()+","+selectedOption+"\n";
+        AAHapticCommon.writeAnswerToFile(getApplicationContext(), fileWriteString);
+
     }
 }

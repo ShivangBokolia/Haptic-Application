@@ -9,19 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.Set;
-
 // TODO: Fix the participation ID bug
 
-public class Participation extends AppCompatActivity {
+public class AAHapticMainPage extends AppCompatActivity {
 
     Button settingsButton;
-    Button mainStudyButton, tutorialButton;
+    Button mainStudyButton, tutorialButton, sendDataButton;
     EditText idText;
 
-    String id = HapticCommon.user;
+    String id = AAHapticCommon.user;
 
     @Override
 
@@ -33,25 +29,31 @@ public class Participation extends AppCompatActivity {
         settingsButton = findViewById(R.id.settings);
         mainStudyButton = findViewById(R.id.mainStudy);
         tutorialButton = findViewById(R.id.tutorial);
-        idText.setText(HapticCommon.user);
+        sendDataButton=findViewById(R.id.sendData);
 
-        randSettings randSettings = com.example.hapticapplication.randSettings.getInstance();
+        idText.setText(AAHapticCommon.user);
+
+        AADataRandSettings randSettings = AADataRandSettings.getInstance();
 
         // randomize the patterns list:
-        getPattern getPattern = com.example.hapticapplication.getPattern.getInstance();
+        AADataGetPattern getPattern = AADataGetPattern.getInstance();
         getPattern.randomizeLists();
 
+        AAHapticCommon.shufflePatternList();
+        AAHapticCommon.shuffleInputList();
+
+        Log.e("StartingInputList",String.valueOf(AAHapticCommon.inputList));
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!idText.getText().toString().trim().matches("")) {
-                    HapticCommon.user=idText.getText().toString().trim();
-                    HapticCommon.writeAnswerToFile(getApplicationContext(),String.valueOf(id));
+                    AAHapticCommon.user=idText.getText().toString().trim();
+                    AAHapticCommon.writeAnswerToFile(getApplicationContext(),String.valueOf(id));
                     // Create the number of params for each of the pages:
-                    randSettings randSettings = com.example.hapticapplication.randSettings.getInstance();
+                    AADataRandSettings randSettings = AADataRandSettings.getInstance();
                     randSettings.shufflePageParams();
                     Log.e("test","HomePage");
-                    Intent intent = new Intent(Participation.this, Settings.class);
+                    Intent intent = new Intent(AAHapticMainPage.this, AAHapticMainSettings.class);
                     startActivity(intent);
                 }
             }
@@ -65,17 +67,18 @@ public class Participation extends AppCompatActivity {
                     // Shuffling the activities and the vibration number for each page
                     randSettings.shuffleActivity(); // {"Button", "Pattern", "Gesture"}
                     randSettings.shufflePageParams(); // {3, 4, 5}
-                    int condition=HapticCommon.inputConditionArray[HapticCommon.inputConditionCount];
+                    int condition= AAHapticCommon.inputList.get(AAHapticCommon.inputConditionCount);
+
                     if (condition==1){
-                        Intent surveyIntent = new Intent(Participation.this, ThreeGestureCond.class);
+                        Intent surveyIntent = new Intent(AAHapticMainPage.this, AAInputGesture.class);
                         startActivity(surveyIntent);
                     }
                     if (condition==2){
-                        Intent surveyIntent = new Intent(Participation.this, ThreePatternCond.class);
+                        Intent surveyIntent = new Intent(AAHapticMainPage.this, AAInputPattern.class);
                         startActivity(surveyIntent);
                     }
                     if (condition==3){
-                        Intent surveyIntent = new Intent(Participation.this, FourButtonCond.class);
+                        Intent surveyIntent = new Intent(AAHapticMainPage.this, AAInputButton.class);
                         startActivity(surveyIntent);
                     }
                     // First Activity has 3 vibrations:
@@ -125,7 +128,7 @@ public class Participation extends AppCompatActivity {
             }
         });
 
-        tutorialButton.setOnClickListener(new View.OnClickListener() {
+        sendDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendEmail();
@@ -140,6 +143,6 @@ public class Participation extends AppCompatActivity {
 
     void sendEmail(){
         getIntent().addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);  getIntent().addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-        HapticCommon.sendEmail(this);
+        AAHapticCommon.sendEmail(this);
     }
 }

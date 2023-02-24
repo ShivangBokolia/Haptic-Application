@@ -2,6 +2,8 @@ package com.example.hapticapplication;
 
 import static androidx.core.content.FileProvider.getUriForFile;
 
+import static java.lang.String.valueOf;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,22 +16,33 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
 
-public class HapticCommon {
+public class AAHapticCommon {
     static String user="TestUser";
 
     static Context context;
     static private Uri paths;
     static String startDateTime;
     static String participant="P-test";
-    static int[] patternConditionArray = new int[] {4,5,3};
-    static int[] inputConditionArray = new int[] {3,2,1};
     static int patternConditionCount=0;
     static int inputConditionCount=0;
+    static boolean randomized=false;
+    static ArrayList<Integer> inputList=new ArrayList<Integer>() {{add(1); add(2); add(3);}};
+    static ArrayList<Integer> patternList=new ArrayList<Integer>() {{add(3); add(4); add(5);}};
+    static Long pauseLength=500L;
 
+    public static void shuffleInputList(){
 
+        Collections.shuffle(inputList);
+    }
+    public static void shufflePatternList(){
+        Collections.shuffle(patternList);
+    }
 
     public static void writeAnswerToFile(Context cntx, String textToWrite){
         try {
@@ -123,4 +136,6 @@ public class HapticCommon {
         String currentDateandTime = sdf.format(new Date());
         return currentDateandTime.toString();
     }
+
+
 }

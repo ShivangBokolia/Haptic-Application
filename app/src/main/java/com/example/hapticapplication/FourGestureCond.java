@@ -31,14 +31,14 @@ public class FourGestureCond extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_four_gesture_cond);
+        setContentView(R.layout.activity_four_gesture_condition);
 
         // Creating a vibrator object for the vibrations
         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         // Getting the instance for the patterns and vibration settings
-        randSettings randSettings = com.example.hapticapplication.randSettings.getInstance();
-        getPattern getPattern = com.example.hapticapplication.getPattern.getInstance();
+        AADataRandSettings randSettings = AADataRandSettings.getInstance();
+        AADataGetPattern getPattern = AADataGetPattern.getInstance();
         vibSettings vibSettings = com.example.hapticapplication.vibSettings.getInstance();
 
         // Setting the timings for short vibrations and long vibrations
@@ -131,7 +131,7 @@ public class FourGestureCond extends AppCompatActivity {
                     if (randSettings.getFirstPage() == 4) {
                         int nextPageVib = randSettings.getSecondPage();
                         if (nextPageVib == 3) {
-                            Intent threeActivityIntent = new Intent(FourGestureCond.this, ThreeGestureCond.class);
+                            Intent threeActivityIntent = new Intent(FourGestureCond.this, AAInputGesture.class);
                             startActivity(threeActivityIntent);
                         } else if (nextPageVib == 5) {
                             Intent fiveActivityIntent = new Intent(FourGestureCond.this, FiveGestureCond.class);
@@ -140,7 +140,7 @@ public class FourGestureCond extends AppCompatActivity {
                     } else if (randSettings.getSecondPage() == 4) {
                         int nextPageVib = randSettings.getThirdPage();
                         if (nextPageVib == 3) {
-                            Intent threeActivityIntent = new Intent(FourGestureCond.this, ThreeGestureCond.class);
+                            Intent threeActivityIntent = new Intent(FourGestureCond.this, AAInputGesture.class);
                             startActivity(threeActivityIntent);
                         } else if (nextPageVib == 5) {
                             Intent fiveActivityIntent = new Intent(FourGestureCond.this, FiveGestureCond.class);

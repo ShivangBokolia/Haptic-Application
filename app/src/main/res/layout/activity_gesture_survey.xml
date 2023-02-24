@@ -19,7 +19,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/gesturea1"
+        android:id="@+id/a1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -43,10 +43,10 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gesturea1" />
+        app:layout_constraintTop_toBottomOf="@+id/a1" />
 
     <EditText
-        android:id="@+id/gesturea2"
+        android:id="@+id/a2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -71,10 +71,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gesturea2" />
+        app:layout_constraintTop_toBottomOf="@+id/a2" />
 
     <EditText
-        android:id="@+id/gesturea3"
+        android:id="@+id/a3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -99,10 +99,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gesturea3" />
+        app:layout_constraintTop_toBottomOf="@+id/a3" />
 
     <EditText
-        android:id="@+id/gesturea4"
+        android:id="@+id/a4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -127,10 +127,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gesturea4" />
+        app:layout_constraintTop_toBottomOf="@+id/a4" />
 
     <EditText
-        android:id="@+id/gesturea5"
+        android:id="@+id/a5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -155,7 +155,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gesturea5"
+        app:layout_constraintTop_toBottomOf="@+id/a5"
         app:layout_constraintVertical_bias="0.058" />
 
     <TextView

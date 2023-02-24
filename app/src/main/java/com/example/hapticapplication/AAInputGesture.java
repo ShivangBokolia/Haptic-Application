@@ -1,12 +1,13 @@
 package com.example.hapticapplication;
 
+import static java.lang.String.valueOf;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.gesture.Gesture;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -19,28 +20,31 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 // TODO: Check if the user created the correct answer
 // TODO: Save the answer provided by the user
 // TODO: The dot is not being said by the voice (FIX IT)
 
-public class ThreeGestureCond extends AppCompatActivity {
+public class AAInputGesture extends AppCompatActivity {
 
     private int shortVibrationTime, longVibrationTime;
     private String answerPattern;
+    long startTime=0;
+    int generatePresses=0;
+    AADataGetPattern getPattern = AADataGetPattern.getInstance();
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_three_gesture_cond);
+        setContentView(R.layout.activity_gesture);
 
         // Creating a vibrator object for the vibrations
         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         Log.e("view","threeGesture");
         // Getting the instance for the patterns and vibration settings
-        randSettings randSettings = com.example.hapticapplication.randSettings.getInstance();
-        getPattern getPattern = com.example.hapticapplication.getPattern.getInstance();
+        AADataRandSettings randSettings = AADataRandSettings.getInstance();
         vibSettings vibSettings = com.example.hapticapplication.vibSettings.getInstance();
 
         // Setting the timings for short vibrations and long vibrations
@@ -53,7 +57,21 @@ public class ThreeGestureCond extends AppCompatActivity {
         Button nextButton = findViewById(R.id.threeGestureNextButton);
         Button resetButton = findViewById(R.id.threeGestureResetButton);
         TextView gestureText = findViewById(R.id.threeGestureText);
-        int patternCondition=HapticCommon.patternConditionArray[HapticCommon.patternConditionCount];
+        TextView inputTV=findViewById(R.id.tvinput);
+
+
+        TextView counterTV=findViewById(R.id.tvCounter);
+        int count=getPattern.getCounter()+3*(AAHapticCommon.inputConditionCount*3+ AAHapticCommon.patternConditionCount);
+        Log.e("Counter:", String.valueOf(getPattern.getCounter())+","+String.valueOf(AAHapticCommon.inputConditionCount)+","+String.valueOf(AAHapticCommon.patternConditionCount));
+
+
+        int patternCondition= AAHapticCommon.patternList.get(AAHapticCommon.patternConditionCount);
+
+        Log.e("PattersGesture",String.valueOf(AAHapticCommon.patternList));
+
+        counterTV.setText("Trial No.: "+String.valueOf(count)+"/27");//+String.valueOf(patternCondition));
+
+
         if (patternCondition==3){
             Log.e("GestureTest",String.valueOf(patternCondition));
             if ( getPattern.getCounter() == 1) {
@@ -117,6 +135,9 @@ public class ThreeGestureCond extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final VibrationEffect generateVibration;
+                startTime=Calendar.getInstance().getTimeInMillis();
+                generatePresses++;
+                writeAns("1.1","GenstureInput","GenerateButton","Gesture");
                 generateVibration = VibrationEffect.createWaveform(convAnswerPattern, VibrationEffect.DEFAULT_AMPLITUDE);
 
                 vibrator.cancel();
@@ -142,9 +163,16 @@ public class ThreeGestureCond extends AppCompatActivity {
                 if (totalTime > 0) {
                     if (totalTime > 0.5) {
                         userCreatedPattern.add("Dash");
+                        writeAns("1.1","gestureInput","-","Gesture");
                     } else {
                         userCreatedPattern.add("Dot");
+                        writeAns("1.1","gestureInput",".","Gesture");
                     }
+//                    String inputText="";
+//                    for (int i=0;i<userCreatedPattern.size();i++){
+//                        inputText=inputText+userCreatedPattern
+//                    }
+                    inputTV.setText(getPattern.convertToDotDash(userCreatedPattern));
                     Log.e("userAns",String.valueOf(userCreatedPattern));
                 }
 
@@ -155,22 +183,23 @@ public class ThreeGestureCond extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                writeAns("2.1","final",getPattern.convertToDotDash(userCreatedPattern),"Gesture");
                 // Same activity to be repeated again
                 if ((getPattern.getCounter() == 1 || getPattern.getCounter() == 2) && !getPattern.isThreeGesture()) {
                     getPattern.incrementCounter();
-                    Intent sameActivity = new Intent(ThreeGestureCond.this, ThreeGestureCond.class);
+                    Intent sameActivity = new Intent(AAInputGesture.this, AAInputGesture.class);
                     startActivity(sameActivity);
                 }
                 // Move on to a different activity
                 else if (getPattern.getCounter() == 3) {
                     getPattern.resetCounter();
-                    HapticCommon.patternConditionCount++;
-                    if (HapticCommon.patternConditionCount>2){
-                        Intent surveyIntent = new Intent(ThreeGestureCond.this, GestureSurvey.class);
+                    AAHapticCommon.patternConditionCount++;
+                    if (AAHapticCommon.patternConditionCount>2){
+                        AAHapticCommon.shufflePatternList();
+                        Intent surveyIntent = new Intent(AAInputGesture.this, GestureSurvey.class);
                         startActivity(surveyIntent);
                     }else{
-                        Intent intent = new Intent(ThreeGestureCond.this, ThreeGestureCond.class);
+                        Intent intent = new Intent(AAInputGesture.this, AAInputGesture.class);
                         startActivity(intent);
                     }
 
@@ -214,7 +243,14 @@ public class ThreeGestureCond extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 userCreatedPattern.clear();
+                inputTV.setText("");
+                writeAns("1.1","gestureInput","Reset","Gesture");
             }
         });
+    }
+    private void writeAns(String index, String tag, String selectedOption, String inputType){
+        String fileWriteString=index+","+getPattern.getCounter()+inputType+tag+","+ AAHapticCommon.dateTime()+","+valueOf(startTime)+","+valueOf(Calendar.getInstance().getTimeInMillis())+","+valueOf(generatePresses)+","+answerPattern.toString()+","+selectedOption+"\n";
+        AAHapticCommon.writeAnswerToFile(getApplicationContext(), fileWriteString);
+
     }
 }

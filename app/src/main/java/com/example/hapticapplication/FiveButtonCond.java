@@ -11,7 +11,6 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +32,8 @@ public class FiveButtonCond extends AppCompatActivity {
         List<String> selectedAnswer = new ArrayList<>();
 
         // Getting the instance for the patterns and vibration settings
-        randSettings randSettings = com.example.hapticapplication.randSettings.getInstance();
-        getPattern getPattern = com.example.hapticapplication.getPattern.getInstance();
+        AADataRandSettings randSettings = AADataRandSettings.getInstance();
+        AADataGetPattern getPattern = AADataGetPattern.getInstance();
         vibSettings vibSettings = com.example.hapticapplication.vibSettings.getInstance();
 
         // Setting the timings for short vibrations and long vibrations
@@ -140,7 +139,7 @@ public class FiveButtonCond extends AppCompatActivity {
                             Intent fourActivityIntent = new Intent(FiveButtonCond.this, ButtonCond.class);
                             startActivity(fourActivityIntent);
                         } else if (nextPageVib == 4) {
-                            Intent fiveActivityIntent = new Intent(FiveButtonCond.this, FourButtonCond.class);
+                            Intent fiveActivityIntent = new Intent(FiveButtonCond.this, AAInputButton.class);
                             startActivity(fiveActivityIntent);
                         }
                     }
@@ -151,7 +150,7 @@ public class FiveButtonCond extends AppCompatActivity {
                             Intent fourActivityIntent = new Intent(FiveButtonCond.this, ButtonCond.class);
                             startActivity(fourActivityIntent);
                         } else if (nextPageVib == 4) {
-                            Intent fiveActivityIntent = new Intent(FiveButtonCond.this, FourButtonCond.class);
+                            Intent fiveActivityIntent = new Intent(FiveButtonCond.this, AAInputButton.class);
                             startActivity(fiveActivityIntent);
                         }
                     }

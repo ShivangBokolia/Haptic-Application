@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class getPattern {
+public class AADataGetPattern {
 
     private int counter = 1;
     private boolean threeButton = false;
@@ -84,10 +84,10 @@ public class getPattern {
         add("_____");
     }};
 
-    private static getPattern getPatternInstance = new getPattern();
-    public static getPattern getInstance() { return getPatternInstance; }
+    private static AADataGetPattern getPatternInstance = new AADataGetPattern();
+    public static AADataGetPattern getInstance() { return getPatternInstance; }
 
-    private getPattern() {}
+    private AADataGetPattern() {}
 
     public void randomizeLists () {
         Collections.shuffle(patternSize3);
@@ -114,11 +114,12 @@ public class getPattern {
         for (int i=0; i<pattern.length(); i++){
             if (pattern.charAt(i) == '.') {
                 timePattern.add((long) shortVibrationTime);
-                timePattern.add(700L);
+                //timePattern.add(700L);
             } else if (pattern.charAt(i) == '_') {
                 timePattern.add((long) longVibrationTime);
-                timePattern.add(700L);
+                //timePattern.add(700L);
             }
+            timePattern.add(AAHapticCommon.pauseLength);
         }
 
         long[] timePatternLong = new long[timePattern.size()];
@@ -143,14 +144,22 @@ public class getPattern {
 
     public String convertPatternToText(String pattern) {
         StringBuilder textPattern = new StringBuilder();
+        StringBuilder visPattern=new StringBuilder();
         for (int i=0; i<pattern.length(); i++){
             if (pattern.charAt(i) == '.') {
-                textPattern.append("Dot ");
+                textPattern.append("Dot");
+                visPattern.append(". ");
             } else if (pattern.charAt(i) == '_') {
-                textPattern.append("Dash ");
+                textPattern.append("Dash");
+                visPattern.append("- ");
+
             }
+            textPattern.append(", ");
         }
-        return textPattern.toString();
+
+        //String returnText=textPattern.toString()+"\n"+visPattern.toString();
+        String returnText=textPattern.toString();
+        return returnText;
     }
 
     public int getCounter() { return counter; }

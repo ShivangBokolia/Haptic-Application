@@ -1,5 +1,7 @@
 package com.example.hapticapplication;
 
+import static java.lang.String.valueOf;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,17 +17,20 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.regex.Pattern;
+import java.util.Calendar;
 
 // TODO: Check if the user created the correct answer
 // TODO: Save the answer provided by the user
 // TODO: The dot is not being said by the voice (FIX IT)
 
-public class ThreePatternCond extends AppCompatActivity {
+public class AAInputPattern extends AppCompatActivity {
 
     private int shortVibrationTime, longVibrationTime;
     private String answerPattern;
     private TextView textAnswer;
+    long startTime=0;
+    int generatePresses=0;
+    AADataGetPattern getPattern = AADataGetPattern.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +42,7 @@ public class ThreePatternCond extends AppCompatActivity {
         Log.e("view","threePattern");
 
         // Getting the instance for the patterns and vibration settings
-        randSettings randSettings = com.example.hapticapplication.randSettings.getInstance();
-        getPattern getPattern = com.example.hapticapplication.getPattern.getInstance();
+        AADataRandSettings randSettings = AADataRandSettings.getInstance();
         vibSettings vibSettings = com.example.hapticapplication.vibSettings.getInstance();
 
         // Setting the timings for short vibrations and long vibrations
@@ -53,7 +57,19 @@ public class ThreePatternCond extends AppCompatActivity {
         Button resetButton = findViewById(R.id.threePatternResettButton);
         textAnswer = findViewById(R.id.dotDashAnswer);
 
-        int patternCondition=HapticCommon.patternConditionArray[HapticCommon.patternConditionCount];
+        TextView inputTV=findViewById(R.id.tvinput);
+
+
+        TextView counterTV=findViewById(R.id.tvCounter);
+        int count=getPattern.getCounter()+3*(AAHapticCommon.inputConditionCount*3+ AAHapticCommon.patternConditionCount);
+        Log.e("Counter:", String.valueOf(getPattern.getCounter())+","+String.valueOf(AAHapticCommon.inputConditionCount)+","+String.valueOf(AAHapticCommon.patternConditionCount));
+
+
+        int patternCondition= AAHapticCommon.patternList.get(AAHapticCommon.patternConditionCount);
+
+        Log.e("PattersGesture",String.valueOf(AAHapticCommon.patternList));
+        counterTV.setText("Trial No.: "+String.valueOf(count)+"/27");//+String.valueOf(patternCondition));
+
         if (patternCondition==3) {
             Log.e("PatternTest", String.valueOf(patternCondition));
             if (getPattern.getCounter() == 1) {
@@ -113,6 +129,9 @@ public class ThreePatternCond extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
+                startTime= Calendar.getInstance().getTimeInMillis();
+                generatePresses++;
+                writeAns("1.2","PatternInput","GenerateButton","Pattern");
                 final VibrationEffect generateVibration;
                 generateVibration = VibrationEffect.createWaveform(convAnswerPattern, VibrationEffect.DEFAULT_AMPLITUDE);
 
@@ -127,11 +146,13 @@ public class ThreePatternCond extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 userCreatedPattern.add("Dot");
+                writeAns("1.2","patternInput",".","Pattern");
                 final VibrationEffect generateVibration;
                 generateVibration = VibrationEffect.createOneShot(shortVibrationTime, VibrationEffect.DEFAULT_AMPLITUDE);
 
                 vibrator.cancel();
                 vibrator.vibrate(generateVibration);
+                inputTV.setText(getPattern.convertToDotDash(userCreatedPattern));
             }
         });
 
@@ -141,11 +162,13 @@ public class ThreePatternCond extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 userCreatedPattern.add("Dash");
+                writeAns("1.2","patternInput","-","Pattern");
                 final VibrationEffect generateVibration;
                 generateVibration = VibrationEffect.createOneShot(longVibrationTime, VibrationEffect.DEFAULT_AMPLITUDE);
 
                 vibrator.cancel();
                 vibrator.vibrate(generateVibration);
+                inputTV.setText(getPattern.convertToDotDash(userCreatedPattern));
             }
         });
 
@@ -153,23 +176,24 @@ public class ThreePatternCond extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                writeAns("2.2","final",getPattern.convertToDotDash(userCreatedPattern),"Pattern");
                 // Same activity to be repeated again
                 if ((getPattern.getCounter() == 1 || getPattern.getCounter() == 2) && !getPattern.isThreePattern()) {
                     getPattern.incrementCounter();
-                    Intent sameActivity = new Intent(ThreePatternCond.this, ThreePatternCond.class);
+                    Intent sameActivity = new Intent(AAInputPattern.this, AAInputPattern.class);
                     startActivity(sameActivity);
                 }
                 // Move on to a different activity
                 else if (getPattern.getCounter() == 3 && !getPattern.isThreePattern()) {
                     getPattern.resetCounter();
 
-                    HapticCommon.patternConditionCount++;
-                    if (HapticCommon.patternConditionCount>2){
-                        Intent surveyIntent = new Intent(ThreePatternCond.this, GestureSurvey.class);
+                    AAHapticCommon.patternConditionCount++;
+                    if (AAHapticCommon.patternConditionCount>2){
+                        AAHapticCommon.shufflePatternList();
+                        Intent surveyIntent = new Intent(AAInputPattern.this, GestureSurvey.class);
                         startActivity(surveyIntent);
                     }else{
-                        Intent intent = new Intent(ThreePatternCond.this, ThreePatternCond.class);
+                        Intent intent = new Intent(AAInputPattern.this, AAInputPattern.class);
                         startActivity(intent);
                     }
 
@@ -220,8 +244,16 @@ public class ThreePatternCond extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 userCreatedPattern.clear();
+                inputTV.setText("");
+                writeAns("1.2","patternInput","reset","Pattern");
+
             }
         });
+    }
+    private void writeAns(String index, String tag, String selectedOption, String inputType){
+        String fileWriteString=index+","+getPattern.getCounter()+inputType+tag+","+ AAHapticCommon.dateTime()+","+valueOf(startTime)+","+valueOf(Calendar.getInstance().getTimeInMillis())+","+valueOf(generatePresses)+","+answerPattern.toString()+","+selectedOption+"\n";
+        AAHapticCommon.writeAnswerToFile(getApplicationContext(), fileWriteString);
+
     }
 
 

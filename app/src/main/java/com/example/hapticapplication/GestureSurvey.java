@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import java.util.Calendar;
 
 public class GestureSurvey extends AppCompatActivity {
+    EditText a1,a2,a3,a4,a5,a6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,29 +19,41 @@ public class GestureSurvey extends AppCompatActivity {
         setContentView(R.layout.activity_gesture_survey);
 
         Button nextButton = findViewById(R.id.surveyGestureSaveButton);
-        randSettings randSettings = com.example.hapticapplication.randSettings.getInstance();
+        a1=findViewById(R.id.a1);
+        a2=findViewById(R.id.a2);
+        a3=findViewById(R.id.a3);
+        a4=findViewById(R.id.a4);
+        a5=findViewById(R.id.a5);
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HapticCommon.inputConditionCount++;
-                if (HapticCommon.inputConditionCount>2){
+                int condition= AAHapticCommon.inputList.get(AAHapticCommon.inputConditionCount);
+                String fileWriteString="0."+String.valueOf(condition)+","+ AAHapticCommon.dateTime()+","+","+String.valueOf(Calendar.getInstance().getTimeInMillis())+","
+                        +a1.getText()+","
+                        +a2.getText()+","
+                        +a3.getText()+","
+                        +a4.getText()+","
+                        +a5.getText()+","
+                        +"\n";
+                AAHapticCommon.inputConditionCount++;
+                if (AAHapticCommon.inputConditionCount>2){
                     //go to Qual answers
-                    Intent surveyIntent = new Intent(GestureSurvey.this, QualAns.class);
+                    Intent surveyIntent = new Intent(GestureSurvey.this, AAHapticMainQualAns.class);
                     startActivity(surveyIntent);
                 }else{
-                    HapticCommon.patternConditionCount=0;
-                    int condition=HapticCommon.inputConditionArray[HapticCommon.inputConditionCount];
+                    AAHapticCommon.patternConditionCount=0;
+                    condition= AAHapticCommon.inputList.get(AAHapticCommon.inputConditionCount);
                     if (condition==1){
-                        Intent surveyIntent = new Intent(GestureSurvey.this, ThreeGestureCond.class);
+                        Intent surveyIntent = new Intent(GestureSurvey.this, AAInputGesture.class);
                         startActivity(surveyIntent);
                     }
                     if (condition==2){
-                        Intent surveyIntent = new Intent(GestureSurvey.this, ThreePatternCond.class);
+                        Intent surveyIntent = new Intent(GestureSurvey.this, AAInputPattern.class);
                         startActivity(surveyIntent);
                     }
                     if (condition==3){
-                        Intent surveyIntent = new Intent(GestureSurvey.this, FourButtonCond.class);
+                        Intent surveyIntent = new Intent(GestureSurvey.this, AAInputButton.class);
                         startActivity(surveyIntent);
                     }
                 }

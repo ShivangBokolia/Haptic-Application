@@ -15,7 +15,7 @@ public class ButtonSurvey extends AppCompatActivity {
         setContentView(R.layout.activity_button_survey);
 
         Button nextButton = findViewById(R.id.surveyButtonSaveButton);
-        randSettings randSettings = com.example.hapticapplication.randSettings.getInstance();
+        AADataRandSettings randSettings = AADataRandSettings.getInstance();
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,10 +28,10 @@ public class ButtonSurvey extends AppCompatActivity {
                     String nextActivity = randSettings.getSecondActivity();
                     if (randSettings.getFirstPage() == 3) {
                         if (nextActivity.matches("Pattern")) {
-                            Intent intentPattern = new Intent(ButtonSurvey.this, ThreePatternCond.class);
+                            Intent intentPattern = new Intent(ButtonSurvey.this, AAInputPattern.class);
                             startActivity(intentPattern);
                         } else if (nextActivity.matches("Gesture")) {
-                            Intent intentGesture = new Intent(ButtonSurvey.this, ThreeGestureCond.class);
+                            Intent intentGesture = new Intent(ButtonSurvey.this, AAInputGesture.class);
                             startActivity(intentGesture);
                         }
                     } else if (randSettings.getFirstPage() == 4) {
@@ -57,10 +57,10 @@ public class ButtonSurvey extends AppCompatActivity {
                     String nextActivity = randSettings.getThirdActivity();
                     if (randSettings.getFirstPage() == 3) {
                         if (nextActivity.matches("Pattern")) {
-                            Intent intentPattern = new Intent(ButtonSurvey.this, ThreePatternCond.class);
+                            Intent intentPattern = new Intent(ButtonSurvey.this, AAInputPattern.class);
                             startActivity(intentPattern);
                         } else if (nextActivity.matches("Gesture")) {
-                            Intent intentGesture = new Intent(ButtonSurvey.this, ThreeGestureCond.class);
+                            Intent intentGesture = new Intent(ButtonSurvey.this, AAInputGesture.class);
                             startActivity(intentGesture);
                         }
                     } else if (randSettings.getFirstPage() == 4) {
