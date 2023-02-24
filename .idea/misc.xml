@@ -26,12 +26,14 @@
         <entry key="app/src/main/res/layout/activity_five_button_cond.xml" value="0.15677083333333333" />
         <entry key="app/src/main/res/layout/activity_five_gesture_cond.xml" value="0.15677083333333333" />
         <entry key="app/src/main/res/layout/activity_five_pattern_cond.xml" value="0.15677083333333333" />
-        <entry key="app/src/main/res/layout/activity_four_button_cond.xml" value="0.15677083333333333" />
+        <entry key="app/src/main/res/layout/activity_four_button_cond.xml" value="0.18679351806640626" />
         <entry key="app/src/main/res/layout/activity_gesture_survey.xml" value="0.3498616536458334" />
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.15677083333333333" />
-        <entry key="app/src/main/res/layout/activity_qual_ans.xml" value="0.5820388793945312" />
-        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.15677083333333333" />
-        <entry key="app/src/main/res/layout/participation.xml" value="0.15677083333333333" />
+        <entry key="app/src/main/res/layout/activity_qual_ans.xml" value="0.31413879394531247" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.2689092000325521" />
+        <entry key="app/src/main/res/layout/activity_three_gesture_cond.xml" value="0.3040957906971807" />
+        <entry key="app/src/main/res/layout/activity_three_pattern_cond.xml" value="0.21507568359375007" />
+        <entry key="app/src/main/res/layout/participation.xml" value="0.20656585693359375" />
         <entry key="app/src/main/res/xml/filepaths.xml" value="0.15677083333333333" />
       </map>
     </option>
