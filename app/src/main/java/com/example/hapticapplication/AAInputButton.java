@@ -27,6 +27,7 @@ public class AAInputButton extends AppCompatActivity {
     long startTime=0;
     int generatePresses=0;
     String selectedpattern="";
+    int patternCondition=0;
     StringBuilder answerPattern = new StringBuilder();
     StringBuilder option1Pattern = new StringBuilder();
     StringBuilder option2Pattern = new StringBuilder();
@@ -60,7 +61,7 @@ public class AAInputButton extends AppCompatActivity {
         Button nextButton = findViewById(R.id.fourButtonNextButton);
 
 
-        int patternCondition= AAHapticCommon.patternList.get(AAHapticCommon.patternConditionCount);
+        patternCondition= AAHapticCommon.patternList.get(AAHapticCommon.patternConditionCount);
 
         Log.e("PattersGesture",String.valueOf(AAHapticCommon.patternList));
 
@@ -261,7 +262,7 @@ public class AAInputButton extends AppCompatActivity {
 
     }
     private void writeAns(String index, String tag, String selectedOption, String inputType){
-        String fileWriteString=index+","+getPattern.getCounter()+inputType+tag+","+ AAHapticCommon.dateTime()+","+valueOf(startTime)+","+valueOf(Calendar.getInstance().getTimeInMillis())+","+valueOf(generatePresses)+","+answerPattern.toString()+","+selectedOption+"\n";
+        String fileWriteString=index+","+patternCondition+","+getPattern.getCounter()+","+inputType+","+tag+","+ AAHapticCommon.dateTime()+","+valueOf(startTime)+","+valueOf(Calendar.getInstance().getTimeInMillis())+","+valueOf(generatePresses)+","+answerPattern.toString()+","+selectedOption+"\n";
         AAHapticCommon.writeAnswerToFile(getApplicationContext(), fileWriteString);
 
     }

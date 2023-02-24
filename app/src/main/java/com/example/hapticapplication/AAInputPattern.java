@@ -30,6 +30,7 @@ public class AAInputPattern extends AppCompatActivity {
     private TextView textAnswer;
     long startTime=0;
     int generatePresses=0;
+    int patternCondition=0;
     AADataGetPattern getPattern = AADataGetPattern.getInstance();
 
     @Override
@@ -65,7 +66,7 @@ public class AAInputPattern extends AppCompatActivity {
         Log.e("Counter:", String.valueOf(getPattern.getCounter())+","+String.valueOf(AAHapticCommon.inputConditionCount)+","+String.valueOf(AAHapticCommon.patternConditionCount));
 
 
-        int patternCondition= AAHapticCommon.patternList.get(AAHapticCommon.patternConditionCount);
+        patternCondition= AAHapticCommon.patternList.get(AAHapticCommon.patternConditionCount);
 
         Log.e("PattersGesture",String.valueOf(AAHapticCommon.patternList));
         counterTV.setText("Trial No.: "+String.valueOf(count)+"/27");//+String.valueOf(patternCondition));
@@ -251,7 +252,7 @@ public class AAInputPattern extends AppCompatActivity {
         });
     }
     private void writeAns(String index, String tag, String selectedOption, String inputType){
-        String fileWriteString=index+","+getPattern.getCounter()+inputType+tag+","+ AAHapticCommon.dateTime()+","+valueOf(startTime)+","+valueOf(Calendar.getInstance().getTimeInMillis())+","+valueOf(generatePresses)+","+answerPattern.toString()+","+selectedOption+"\n";
+        String fileWriteString=index+","+patternCondition+","+getPattern.getCounter()+","+inputType+","+tag+","+ AAHapticCommon.dateTime()+","+valueOf(startTime)+","+valueOf(Calendar.getInstance().getTimeInMillis())+","+valueOf(generatePresses)+","+answerPattern.toString()+","+selectedOption+"\n";
         AAHapticCommon.writeAnswerToFile(getApplicationContext(), fileWriteString);
 
     }

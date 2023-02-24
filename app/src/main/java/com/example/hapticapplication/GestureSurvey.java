@@ -36,6 +36,7 @@ public class GestureSurvey extends AppCompatActivity {
                         +a4.getText()+","
                         +a5.getText()+","
                         +"\n";
+                AAHapticCommon.writeAnswerToFile(getApplicationContext(),fileWriteString);
                 AAHapticCommon.inputConditionCount++;
                 if (AAHapticCommon.inputConditionCount>2){
                     //go to Qual answers
