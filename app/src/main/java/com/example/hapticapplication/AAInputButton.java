@@ -205,7 +205,7 @@ public class AAInputButton extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Repeat the same activity
-                writeAns("2.,1","final",selectedpattern,"button");
+                writeAns("2.1","final",selectedpattern,"button");
                 if ((getPattern.getCounter() == 1 || getPattern.getCounter() == 2) && !getPattern.isFourButton()) {
                     getPattern.incrementCounter();
                     Intent sameActivity = new Intent(AAInputButton.this, AAInputButton.class);
