@@ -14,6 +14,7 @@ import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -21,6 +22,7 @@ public class AAHapticMainSettings extends AppCompatActivity {
 
     EditText speedText;
     Button playButton, saveButton;
+    TextView patternTV;
 
     int timing = 300;
 
@@ -34,6 +36,9 @@ public class AAHapticMainSettings extends AppCompatActivity {
         speedText = findViewById(R.id.speedNo);
         playButton = findViewById(R.id.playButton);
         saveButton = findViewById(R.id.saveButton);
+        patternTV=findViewById(R.id.TVpattern);
+
+        patternTV.setText("Dot Dash Dot");
 
         vibSettings vibSettings = com.example.hapticapplication.vibSettings.getInstance();
         AADataGetPattern getPattern = AADataGetPattern.getInstance();

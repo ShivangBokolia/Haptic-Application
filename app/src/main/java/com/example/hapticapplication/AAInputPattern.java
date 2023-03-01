@@ -29,9 +29,12 @@ public class AAInputPattern extends AppCompatActivity {
     private String answerPattern;
     private TextView textAnswer;
     long startTime=0;
+    long startDown=0;
     int generatePresses=0;
     int patternCondition=0;
     AADataGetPattern getPattern = AADataGetPattern.getInstance();
+    Vibrator vibrator;
+    VibrationEffect generateVibration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,6 @@ public class AAInputPattern extends AppCompatActivity {
         setContentView(R.layout.activity_three_pattern_cond);
 
         // Creating a vibrator object for the vibrations
-        final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         Log.e("view","threePattern");
 
         // Getting the instance for the patterns and vibration settings
@@ -60,6 +62,8 @@ public class AAInputPattern extends AppCompatActivity {
 
         TextView inputTV=findViewById(R.id.tvinput);
 
+        vibrator= (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        generateVibration = VibrationEffect.createOneShot(10000, VibrationEffect.DEFAULT_AMPLITUDE);
 
         TextView counterTV=findViewById(R.id.tvCounter);
         int count=getPattern.getCounter()+3*(AAHapticCommon.inputConditionCount*3+ AAHapticCommon.patternConditionCount);
@@ -133,11 +137,10 @@ public class AAInputPattern extends AppCompatActivity {
                 startTime= Calendar.getInstance().getTimeInMillis();
                 generatePresses++;
                 writeAns("1.2","PatternInput","GenerateButton","Pattern");
-                final VibrationEffect generateVibration;
-                generateVibration = VibrationEffect.createWaveform(convAnswerPattern, VibrationEffect.DEFAULT_AMPLITUDE);
-
-                vibrator.cancel();
+                startDown=System.currentTimeMillis();
                 vibrator.vibrate(generateVibration);
+                new Thread(new LongVib()).start();
+
             }
         });
 
@@ -148,12 +151,10 @@ public class AAInputPattern extends AppCompatActivity {
             public void onClick(View v) {
                 userCreatedPattern.add("Dot");
                 writeAns("1.2","patternInput",".","Pattern");
-                final VibrationEffect generateVibration;
-                generateVibration = VibrationEffect.createOneShot(shortVibrationTime, VibrationEffect.DEFAULT_AMPLITUDE);
-
-                vibrator.cancel();
+                startDown=System.currentTimeMillis();
                 vibrator.vibrate(generateVibration);
                 inputTV.setText(getPattern.convertToDotDash(userCreatedPattern));
+                new Thread(new ShortVib()).start();
             }
         });
 
@@ -164,12 +165,10 @@ public class AAInputPattern extends AppCompatActivity {
             public void onClick(View v) {
                 userCreatedPattern.add("Dash");
                 writeAns("1.2","patternInput","-","Pattern");
-                final VibrationEffect generateVibration;
-                generateVibration = VibrationEffect.createOneShot(longVibrationTime, VibrationEffect.DEFAULT_AMPLITUDE);
-
-                vibrator.cancel();
+                startDown=System.currentTimeMillis();
                 vibrator.vibrate(generateVibration);
                 inputTV.setText(getPattern.convertToDotDash(userCreatedPattern));
+                new Thread(new LongVib()).start();
             }
         });
 
@@ -254,6 +253,26 @@ public class AAInputPattern extends AppCompatActivity {
     private void writeAns(String index, String tag, String selectedOption, String inputType){
         String fileWriteString=index+","+patternCondition+","+getPattern.getCounter()+","+inputType+","+tag+","+ AAHapticCommon.dateTime()+","+valueOf(startTime)+","+valueOf(Calendar.getInstance().getTimeInMillis())+","+valueOf(generatePresses)+","+answerPattern.toString()+","+selectedOption+"\n";
         AAHapticCommon.writeAnswerToFile(getApplicationContext(), fileWriteString);
+
+    }
+    class ShortVib implements Runnable {
+        @Override
+        public void run() {
+            while (Math.abs(startDown-System.currentTimeMillis())<shortVibrationTime){
+                Log.e("shortVib","ShortVib");
+            }
+            vibrator.cancel();
+        }
+
+    }
+    class LongVib implements Runnable {
+        @Override
+        public void run() {
+            while (Math.abs(startDown-System.currentTimeMillis())<longVibrationTime){
+                Log.e("LongVib","LongVib");
+            }
+            vibrator.cancel();
+        }
 
     }
 

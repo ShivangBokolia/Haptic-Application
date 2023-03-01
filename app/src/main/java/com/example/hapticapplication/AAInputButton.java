@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 // TODO: Check if the user pressed the correct answer
@@ -32,6 +33,7 @@ public class AAInputButton extends AppCompatActivity {
     StringBuilder option1Pattern = new StringBuilder();
     StringBuilder option2Pattern = new StringBuilder();
     AADataGetPattern getPattern = AADataGetPattern.getInstance();
+    List<String> answerList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class AAInputButton extends AppCompatActivity {
         // Setting the timings for short vibrations and long vibrations
         int shortVibrationTime = vibSettings.getData();
         int longVibrationTime = vibSettings.getData() * 3;
+        getPattern.randomizeLists();
 
 
         // Making the object for the buttons
@@ -147,11 +150,16 @@ public class AAInputButton extends AppCompatActivity {
                 option2Pattern.append(getPattern.fivePatternOption(5));
             }
         }
+        answerList.add(option1Pattern.toString());
+        answerList.add(option2Pattern.toString());
+        answerList.add(answerPattern.toString());
+
+        Collections.shuffle(answerList);
 
             // Setting the texts for the buttons
-        option1Button.setText(getPattern.convertPatternToText(option1Pattern.toString()));
-        option2Button.setText(getPattern.convertPatternToText(option2Pattern.toString()));
-        option3Button.setText(getPattern.convertPatternToText(answerPattern.toString()));
+        option1Button.setText(getPattern.convertPatternToText(answerList.get(0)));
+        option2Button.setText(getPattern.convertPatternToText(answerList.get(1)));
+        option3Button.setText(getPattern.convertPatternToText(answerList.get(2)));
 
         // Converting pattern from "._." to "{0, 300, 700, 1000, 700, 300}"
         // The vibrator object requires it in the following format.
@@ -177,7 +185,7 @@ public class AAInputButton extends AppCompatActivity {
         option1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedpattern=option1Pattern.toString();
+                selectedpattern=answerList.get(0);
                 writeAns("1.3","selection",selectedpattern,"button");
 
             }
@@ -187,7 +195,7 @@ public class AAInputButton extends AppCompatActivity {
         option2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedpattern=option2Pattern.toString();
+                selectedpattern=answerList.get(1);
                 writeAns("1.3","selection",selectedpattern,"button");
             }
         });
@@ -196,7 +204,7 @@ public class AAInputButton extends AppCompatActivity {
         option3Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedpattern=(answerPattern.toString());
+                selectedpattern=answerList.get(2);
                 writeAns("1.3","selection",selectedpattern,"button");
             }
         });

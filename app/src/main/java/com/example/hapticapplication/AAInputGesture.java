@@ -162,7 +162,7 @@ public class AAInputGesture extends AppCompatActivity {
                 }
                 float totalTime = ((float) endTime - (float) startTime)/1000;
                 if (totalTime > 0) {
-                    if (totalTime > 0.5) {
+                    if (totalTime > 0.4) {
                         userCreatedPattern.add("Dash");
                         writeAns("1.1","gestureInput","-","Gesture");
                     } else {
