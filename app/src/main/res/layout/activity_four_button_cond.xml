@@ -50,14 +50,14 @@
         android:id="@+id/fourOpt1Button"
         android:layout_width="346dp"
         android:layout_height="0dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:text="Option 1"
         android:textSize="24sp"
         app:backgroundTint="#C40313"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fourGenButton" />
+        app:layout_constraintTop_toBottomOf="@+id/tvButtonInput" />
 
     <Button
         android:id="@+id/fourOpt2Button"
@@ -89,15 +89,26 @@
         android:id="@+id/fourButtonNextButton"
         android:layout_width="346dp"
         android:layout_height="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="60dp"
         android:text="Next"
         android:textSize="24sp"
         app:backgroundTint="#9B0310"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvButtonInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Input"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fourOpt3Button"
-        app:layout_constraintVertical_bias="0.014" />
+        app:layout_constraintTop_toBottomOf="@+id/fourGenButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
