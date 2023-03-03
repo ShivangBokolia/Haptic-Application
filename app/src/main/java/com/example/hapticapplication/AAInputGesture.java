@@ -160,9 +160,9 @@ public class AAInputGesture extends AppCompatActivity {
                     vb.cancel();
                     endTime = SystemClock.elapsedRealtime();
                 }
-                float totalTime = ((float) endTime - (float) startTime)/1000;
+                float totalTime = ((float) endTime - (float) startTime);
                 if (totalTime > 0) {
-                    if (totalTime > 0.4) {
+                    if (totalTime > shortVibrationTime) {
                         userCreatedPattern.add("Dash");
                         writeAns("1.1","gestureInput","-","Gesture");
                     } else {

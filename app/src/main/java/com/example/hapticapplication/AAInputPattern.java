@@ -124,7 +124,7 @@ public class AAInputPattern extends AppCompatActivity {
             }
         }
 
-            long[] convAnswerPattern = getPattern.convertPattern(answerPattern, shortVibrationTime, longVibrationTime);
+        long[] convAnswerPattern = getPattern.convertPattern(answerPattern, shortVibrationTime, longVibrationTime);
 
         // Creating an array to store the pattern made by the user
         ArrayList<String> userCreatedPattern = new ArrayList<>();
@@ -138,8 +138,10 @@ public class AAInputPattern extends AppCompatActivity {
                 generatePresses++;
                 writeAns("1.2","PatternInput","GenerateButton","Pattern");
                 startDown=System.currentTimeMillis();
+                generateVibration = VibrationEffect.createWaveform(convAnswerPattern, VibrationEffect.DEFAULT_AMPLITUDE);
+                vibrator.cancel();
                 vibrator.vibrate(generateVibration);
-                new Thread(new LongVib()).start();
+                //new Thread(new LongVib()).start();
 
             }
         });
@@ -152,7 +154,8 @@ public class AAInputPattern extends AppCompatActivity {
                 userCreatedPattern.add("Dot");
                 writeAns("1.2","patternInput",".","Pattern");
                 startDown=System.currentTimeMillis();
-                vibrator.vibrate(generateVibration);
+                //generateVibration=VibrationEffect.createOneShot(10000);
+                vibrator.vibrate(10000);
                 inputTV.setText(getPattern.convertToDotDash(userCreatedPattern));
                 new Thread(new ShortVib()).start();
             }
@@ -166,7 +169,8 @@ public class AAInputPattern extends AppCompatActivity {
                 userCreatedPattern.add("Dash");
                 writeAns("1.2","patternInput","-","Pattern");
                 startDown=System.currentTimeMillis();
-                vibrator.vibrate(generateVibration);
+                //generateVibration=VibrationEffect.createOneShot(10000);
+                vibrator.vibrate(10000);
                 inputTV.setText(getPattern.convertToDotDash(userCreatedPattern));
                 new Thread(new LongVib()).start();
             }

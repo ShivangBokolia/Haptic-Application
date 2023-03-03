@@ -119,12 +119,13 @@ public class AAHapticCommon {
         //String to[] = {"roshan82@gmail.com","embodiedroshan@gmail.com"};
         emailIntent.putExtra(Intent.EXTRA_EMAIL, to);
         // the attachment
-
+        Log.e("paths", String.valueOf(paths));
         emailIntent.putExtra(Intent.EXTRA_STREAM, paths);
 
 
+
         // the mail subject
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "HAEvaluation-Ans From.."+user);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "HaptAuth Evaluation-Ans From.."+user);
         activity.startActivity(Intent.createChooser(emailIntent, "Send email..."));
     }
 

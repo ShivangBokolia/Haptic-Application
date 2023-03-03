@@ -53,7 +53,8 @@ public class AAHapticMainSettings extends AppCompatActivity {
                     int speed = Integer.parseInt(speedText.getText().toString());
                     if (speed > 0 && speed < 101) {
                         timing = speed * 3; //(speed/100)*300
-                        String fileWriteString="2.0,settings,keylog,"+ AAHapticCommon.dateTime()+","+valueOf(Calendar.getInstance().getTimeInMillis())+","+String.valueOf(timing)+"\n";
+                        vibSettings.setData(timing);
+                        String fileWriteString="2.0,settings,play,"+ AAHapticCommon.dateTime()+","+valueOf(Calendar.getInstance().getTimeInMillis())+","+String.valueOf(timing)+"\n";
                         AAHapticCommon.writeAnswerToFile(getApplicationContext(), fileWriteString);
 
                         long[] patternTemplate = {0, timing, AAHapticCommon.pauseLength, timing*3, AAHapticCommon.pauseLength, timing};
@@ -77,6 +78,8 @@ public class AAHapticMainSettings extends AppCompatActivity {
             public void onClick(View v) {
                 // Setting the vibration value globally
                 vibSettings.setData(timing);
+                String fileWriteString="2.0,settings,save,"+ AAHapticCommon.dateTime()+","+valueOf(Calendar.getInstance().getTimeInMillis())+","+String.valueOf(timing)+"\n";
+                AAHapticCommon.writeAnswerToFile(getApplicationContext(), fileWriteString);
                 Intent intent = new Intent(AAHapticMainSettings.this, AAHapticMainPage.class);
                 startActivity(intent);
             }

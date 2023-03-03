@@ -1,5 +1,7 @@
 package com.example.hapticapplication;
 
+import static java.lang.String.valueOf;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.util.Calendar;
 
 // TODO: Fix the participation ID bug
 
@@ -41,6 +45,9 @@ public class AAHapticMainPage extends AppCompatActivity {
 
         AAHapticCommon.shufflePatternList();
         AAHapticCommon.shuffleInputList();
+
+        String fileWriteString=0.0+","+"Main Page,"+ AAHapticCommon.dateTime()+"\n";
+        AAHapticCommon.writeAnswerToFile(getApplicationContext(), fileWriteString);
 
         Log.e("StartingInputList",String.valueOf(AAHapticCommon.inputList));
         settingsButton.setOnClickListener(new View.OnClickListener() {
