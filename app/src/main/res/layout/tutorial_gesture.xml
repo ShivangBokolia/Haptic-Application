@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AAInputGesture">
+
+    <Button
+        android:id="@+id/threeGestureResetButton"
+        android:layout_width="163dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="27dp"
+        android:text="Reset"
+        android:textSize="24sp"
+        app:backgroundTint="#176422"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/threeGestureInputButton" />
+
+    <TextView
+        android:id="@+id/threeGestureText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Gesture Condition"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCounter"
+        android:layout_width="347dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/threeGestureText" />
+
+    <Button
+        android:id="@+id/threeGestureGenButton"
+        android:layout_width="346dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:text=" Generate Pattern"
+        android:textSize="24sp"
+        app:backgroundTint="#104719"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCounter" />
+
+    <Button
+        android:id="@+id/threeGestureInputButton"
+        android:layout_width="346dp"
+        android:layout_height="225dp"
+        android:layout_marginTop="24dp"
+        android:text="Hold for Input"
+        android:textSize="24sp"
+        app:backgroundTint="#208831"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvinput" />
+
+    <Button
+        android:id="@+id/threeGestureNextButton"
+        android:layout_width="163dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="28dp"
+        android:text="Next"
+        android:textSize="24sp"
+        app:backgroundTint="#176422"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/threeGestureResetButton"
+        app:layout_constraintTop_toBottomOf="@+id/threeGestureInputButton" />
+
+    <TextView
+        android:id="@+id/tvinput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Input"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/threeGestureGenButton" />
+
+    <Button
+        android:id="@+id/readyGesture"
+        android:layout_width="346dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="40dp"
+        android:text="Ready"
+        android:textSize="24sp"
+        app:backgroundTint="#176422"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
