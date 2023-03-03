@@ -62,6 +62,7 @@ public class AAHapticMainPage extends AppCompatActivity {
                     Log.e("test","HomePage");
                     Intent intent = new Intent(AAHapticMainPage.this, AAHapticMainSettings.class);
                     startActivity(intent);
+
                 }
             }
         });

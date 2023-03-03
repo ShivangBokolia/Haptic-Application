@@ -33,6 +33,7 @@ public class AAInputButton extends AppCompatActivity {
     StringBuilder option1Pattern = new StringBuilder();
     StringBuilder option2Pattern = new StringBuilder();
     AADataGetPattern getPattern = AADataGetPattern.getInstance();
+    TextView tvInput;
     List<String> answerList = new ArrayList<String>();
 
     @Override
@@ -62,6 +63,7 @@ public class AAInputButton extends AppCompatActivity {
         Button option2Button = findViewById(R.id.fourOpt2Button);
         Button option3Button = findViewById(R.id.fourOpt3Button);
         Button nextButton = findViewById(R.id.fourButtonNextButton);
+        tvInput=findViewById(R.id.tvButtonInput);
 
 
         patternCondition= AAHapticCommon.patternList.get(AAHapticCommon.patternConditionCount);
@@ -186,6 +188,7 @@ public class AAInputButton extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedpattern=answerList.get(0);
+                tvInput.setText(getPattern.convertPatternToText(selectedpattern));
                 writeAns("1.3","selection",selectedpattern,"button");
 
             }
@@ -196,6 +199,7 @@ public class AAInputButton extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedpattern=answerList.get(1);
+                tvInput.setText(getPattern.convertPatternToText(selectedpattern));
                 writeAns("1.3","selection",selectedpattern,"button");
             }
         });
@@ -205,6 +209,7 @@ public class AAInputButton extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedpattern=answerList.get(2);
+                tvInput.setText(getPattern.convertPatternToText(selectedpattern));
                 writeAns("1.3","selection",selectedpattern,"button");
             }
         });
@@ -218,6 +223,7 @@ public class AAInputButton extends AppCompatActivity {
                     getPattern.incrementCounter();
                     Intent sameActivity = new Intent(AAInputButton.this, AAInputButton.class);
                     startActivity(sameActivity);
+                    finish();
                 }
                 // Move to the next activity
                 else if (getPattern.getCounter() == 3 && !getPattern.isFourButton()) {
@@ -229,9 +235,11 @@ public class AAInputButton extends AppCompatActivity {
                         AAHapticCommon.shufflePatternList();
                         Intent surveyIntent = new Intent(AAInputButton.this, GestureSurvey.class);
                         startActivity(surveyIntent);
+                        finish();
                     }else{
                         Intent intent = new Intent(AAInputButton.this, AAInputButton.class);
                         startActivity(intent);
+                        finish();
                     }
 
                     /*getPattern.resetCounter();

@@ -156,7 +156,7 @@ public class AAInputPattern extends AppCompatActivity {
                 startDown=System.currentTimeMillis();
                 //generateVibration=VibrationEffect.createOneShot(10000);
                 vibrator.vibrate(10000);
-                inputTV.setText(getPattern.convertToDotDash(userCreatedPattern));
+                inputTV.setText(getPattern.convertPatternToText(getPattern.convertToDotDash(userCreatedPattern)));
                 new Thread(new ShortVib()).start();
             }
         });
@@ -171,7 +171,7 @@ public class AAInputPattern extends AppCompatActivity {
                 startDown=System.currentTimeMillis();
                 //generateVibration=VibrationEffect.createOneShot(10000);
                 vibrator.vibrate(10000);
-                inputTV.setText(getPattern.convertToDotDash(userCreatedPattern));
+                inputTV.setText(getPattern.convertPatternToText(getPattern.convertToDotDash(userCreatedPattern)));
                 new Thread(new LongVib()).start();
             }
         });
@@ -186,6 +186,7 @@ public class AAInputPattern extends AppCompatActivity {
                     getPattern.incrementCounter();
                     Intent sameActivity = new Intent(AAInputPattern.this, AAInputPattern.class);
                     startActivity(sameActivity);
+                    finish();
                 }
                 // Move on to a different activity
                 else if (getPattern.getCounter() == 3 && !getPattern.isThreePattern()) {
@@ -196,9 +197,11 @@ public class AAInputPattern extends AppCompatActivity {
                         AAHapticCommon.shufflePatternList();
                         Intent surveyIntent = new Intent(AAInputPattern.this, GestureSurvey.class);
                         startActivity(surveyIntent);
+                        finish();
                     }else{
                         Intent intent = new Intent(AAInputPattern.this, AAInputPattern.class);
                         startActivity(intent);
+                        finish();
                     }
 
 

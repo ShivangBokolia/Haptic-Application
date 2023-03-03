@@ -173,7 +173,7 @@ public class AAInputGesture extends AppCompatActivity {
 //                    for (int i=0;i<userCreatedPattern.size();i++){
 //                        inputText=inputText+userCreatedPattern
 //                    }
-                    inputTV.setText(getPattern.convertToDotDash(userCreatedPattern));
+                    inputTV.setText(getPattern.convertPatternToText(getPattern.convertToDotDash(userCreatedPattern)));
                     Log.e("userAns",String.valueOf(userCreatedPattern));
                 }
 
@@ -190,6 +190,7 @@ public class AAInputGesture extends AppCompatActivity {
                     getPattern.incrementCounter();
                     Intent sameActivity = new Intent(AAInputGesture.this, AAInputGesture.class);
                     startActivity(sameActivity);
+                    finish();
                 }
                 // Move on to a different activity
                 else if (getPattern.getCounter() == 3) {
@@ -199,9 +200,11 @@ public class AAInputGesture extends AppCompatActivity {
                         AAHapticCommon.shufflePatternList();
                         Intent surveyIntent = new Intent(AAInputGesture.this, GestureSurvey.class);
                         startActivity(surveyIntent);
+                        finish();
                     }else{
                         Intent intent = new Intent(AAInputGesture.this, AAInputGesture.class);
                         startActivity(intent);
+                        finish();
                     }
 
                     /*getPattern.resetCounter();
