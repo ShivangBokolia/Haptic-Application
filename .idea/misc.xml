@@ -38,6 +38,9 @@
         <entry key="app/src/main/res/layout/activity_three_pattern_cond.xml" value="0.15677083333333333" />
         <entry key="app/src/main/res/layout/activity_tutorial_button.xml" value="0.31875" />
         <entry key="app/src/main/res/layout/participation.xml" value="0.15677083333333333" />
+        <entry key="app/src/main/res/layout/tutorial_button.xml" value="0.182518115942029" />
+        <entry key="app/src/main/res/layout/tutorial_gesture.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/tutorial_pattern.xml" value="0.1" />
         <entry key="app/src/main/res/xml/filepaths.xml" value="0.15677083333333333" />
       </map>
     </option>
