@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +30,7 @@ public class GestureSurvey extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int condition= AAHapticCommon.inputList.get(AAHapticCommon.inputConditionCount);
-                String fileWriteString="0."+String.valueOf(condition)+","+ AAHapticCommon.dateTime()+","+","+String.valueOf(Calendar.getInstance().getTimeInMillis())+","
+                String fileWriteString="4."+String.valueOf(condition)+","+ AAHapticCommon.dateTime()+","+","+String.valueOf(Calendar.getInstance().getTimeInMillis())+","
                         +a1.getText()+","
                         +a2.getText()+","
                         +a3.getText()+","
@@ -46,16 +47,19 @@ public class GestureSurvey extends AppCompatActivity {
                     AAHapticCommon.patternConditionCount=0;
                     condition= AAHapticCommon.inputList.get(AAHapticCommon.inputConditionCount);
                     if (condition==1){
-                        Intent surveyIntent = new Intent(GestureSurvey.this, AAInputGesture.class);
+                        Intent surveyIntent = new Intent(GestureSurvey.this, TutorialGesture.class);
                         startActivity(surveyIntent);
+                        finish();
                     }
                     if (condition==2){
-                        Intent surveyIntent = new Intent(GestureSurvey.this, AAInputPattern.class);
+                        Intent surveyIntent = new Intent(GestureSurvey.this, TutorialButton.class);
                         startActivity(surveyIntent);
+                        finish();
                     }
                     if (condition==3){
-                        Intent surveyIntent = new Intent(GestureSurvey.this, AAInputButton.class);
+                        Intent surveyIntent = new Intent(GestureSurvey.this, TutorialButton.class);
                         startActivity(surveyIntent);
+                        finish();
                     }
                 }
                 // Shuffle the vibration params again for the next activity

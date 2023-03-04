@@ -3,9 +3,11 @@ package com.example.hapticapplication;
 import static java.lang.String.valueOf;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,7 +37,7 @@ public class AAInputButton extends AppCompatActivity {
     AADataGetPattern getPattern = AADataGetPattern.getInstance();
     TextView tvInput;
     List<String> answerList = new ArrayList<String>();
-
+    AlertDialog.Builder builder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,36 +66,30 @@ public class AAInputButton extends AppCompatActivity {
         Button option3Button = findViewById(R.id.fourOpt3Button);
         Button nextButton = findViewById(R.id.fourButtonNextButton);
         tvInput=findViewById(R.id.tvButtonInput);
-
+        builder=new AlertDialog.Builder(this);
 
         patternCondition= AAHapticCommon.patternList.get(AAHapticCommon.patternConditionCount);
 
-        Log.e("PattersGesture",String.valueOf(AAHapticCommon.patternList));
 
         TextView counterTV=findViewById(R.id.tvCounter);
         int count=getPattern.getCounter()+3*(AAHapticCommon.inputConditionCount*3+ AAHapticCommon.patternConditionCount);
-        Log.e("Counter:", String.valueOf(getPattern.getCounter())+","+String.valueOf(AAHapticCommon.inputConditionCount)+","+String.valueOf(AAHapticCommon.patternConditionCount));
-        counterTV.setText("Trial No.: "+String.valueOf(count)+"/27");//+String.valueOf(patternCondition));
+        counterTV.setText("Trial No.: "+String.valueOf(count)+"/27 ("+String.valueOf(patternCondition)+")");//+String.valueOf(patternCondition));
 
 
         if (patternCondition==3) {
-            Log.e("ButtonTest", String.valueOf(patternCondition));
             if (getPattern.getCounter() == 1) {
-                Log.e("3", "1");
                 // Generating the answer pattern of length 4 for generate button and option 3.
                 // Generating random patterns for option 1 and option 2
                 answerPattern.append(getPattern.threePatternOption(0));
                 option1Pattern.append(getPattern.threePatternOption(1));
                 option2Pattern.append(getPattern.threePatternOption(2));
             } else if (getPattern.getCounter() == 2) {
-                Log.e("3", "2");
                 // Generating the answer pattern of length 4 for generate button and option 3.
                 // Generating random patterns for option 1 and option 2
                 answerPattern.append(getPattern.threePatternOption(3));
                 option1Pattern.append(getPattern.threePatternOption(4));
                 option2Pattern.append(getPattern.threePatternOption(5));
             } else if (getPattern.getCounter() == 3) {
-                Log.e("3", "3");
                 // Generating the answer pattern of length 4 for generate button and option 3.
                 // Generating random patterns for option 1 and option 2
                 answerPattern.append(getPattern.threePatternOption(6));
@@ -103,24 +99,20 @@ public class AAInputButton extends AppCompatActivity {
         }
 
         if (patternCondition==4) {
-            Log.e("ButtonTest", String.valueOf(patternCondition));
             if (getPattern.getCounter() == 1) {
-                Log.e("4", "1");
                 // Generating the answer pattern of length 4 for generate button and option 3.
                 // Generating random patterns for option 1 and option 2
                 answerPattern.append(getPattern.fourPatternOption(0));
                 option1Pattern.append(getPattern.fourPatternOption(1));
                 option2Pattern.append(getPattern.fourPatternOption(2));
             } else if (getPattern.getCounter() == 2) {
-                Log.e("4", "2");
                 // Generating the answer pattern of length 4 for generate button and option 3.
                 // Generating random patterns for option 1 and option 2
                 answerPattern.append(getPattern.fourPatternOption(3));
                 option1Pattern.append(getPattern.fourPatternOption(4));
                 option2Pattern.append(getPattern.fourPatternOption(5));
             } else if (getPattern.getCounter() == 3) {
-                Log.e("4", "3");
-                // Generating the answer pattern of length 4 for generate button and option 3.
+                 // Generating the answer pattern of length 4 for generate button and option 3.
                 // Generating random patterns for option 1 and option 2
                 answerPattern.append(getPattern.fourPatternOption(6));
                 option1Pattern.append(getPattern.fourPatternOption(7));
@@ -128,23 +120,19 @@ public class AAInputButton extends AppCompatActivity {
             }
         }
         if (patternCondition==5) {
-            Log.e("ButtonTest", String.valueOf(patternCondition));
             if (getPattern.getCounter() == 1) {
-                Log.e("5", "1");
                 // Generating the answer pattern of length 5 for generate button and option 3.
                 // Generating random patterns for option 1 and option 2
                 answerPattern.append(getPattern.fivePatternOption(0));
                 option1Pattern.append(getPattern.fivePatternOption(1));
                 option2Pattern.append(getPattern.fivePatternOption(2));
             } else if (getPattern.getCounter() == 2) {
-                Log.e("5", "2");
                 // Generating the answer pattern of length 5 for generate button and option 3.
                 // Generating random patterns for option 1 and option 2
                 answerPattern.append(getPattern.fivePatternOption(3));
                 option1Pattern.append(getPattern.fivePatternOption(4));
                 option2Pattern.append(getPattern.fivePatternOption(5));
             } else if (getPattern.getCounter() == 3) {
-                Log.e("5", "3");
                 // Generating the answer pattern of length 5 for generate button and option 3.
                 // Generating random patterns for option 1 and option 2
                 answerPattern.append(getPattern.fivePatternOption(6));
@@ -218,61 +206,57 @@ public class AAInputButton extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Repeat the same activity
-                writeAns("2.1","final",selectedpattern,"button");
-                if ((getPattern.getCounter() == 1 || getPattern.getCounter() == 2) && !getPattern.isFourButton()) {
-                    getPattern.incrementCounter();
-                    Intent sameActivity = new Intent(AAInputButton.this, AAInputButton.class);
-                    startActivity(sameActivity);
-                    finish();
+                writeAns("5.3","final",selectedpattern,"button");
+
+                String result;
+                result = "Incorrect";
+                Log.e("ques",answerPattern.toString());
+                Log.e("ans",selectedpattern);
+                if (answerPattern.toString().equals(selectedpattern)){
+
+                    result="Correct";
+                    Log.e("res",result);
+
+
                 }
-                // Move to the next activity
-                else if (getPattern.getCounter() == 3 && !getPattern.isFourButton()) {
 
-                    getPattern.resetCounter();
+                builder.setMessage("Required: " + getPattern.convertPatternToText(answerPattern.toString()) + "\nYou entered: " + getPattern.convertPatternToText(selectedpattern))
+                        .setPositiveButton("Okay!", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
 
-                    AAHapticCommon.patternConditionCount++;
-                    if (AAHapticCommon.patternConditionCount>2){
-                        AAHapticCommon.shufflePatternList();
-                        Intent surveyIntent = new Intent(AAInputButton.this, GestureSurvey.class);
-                        startActivity(surveyIntent);
-                        finish();
-                    }else{
-                        Intent intent = new Intent(AAInputButton.this, AAInputButton.class);
-                        startActivity(intent);
-                        finish();
-                    }
 
-                    /*getPattern.resetCounter();
-                    getPattern.setFourButton(true);
+                                if ((getPattern.getCounter() == 1 || getPattern.getCounter() == 2) && !getPattern.isFourButton()) {
+                                    getPattern.incrementCounter();
+                                    Intent sameActivity = new Intent(AAInputButton.this, AAInputButton.class);
+                                    startActivity(sameActivity);
+                                    finish();
+                                }
+                                // Move to the next activity
+                                else if (getPattern.getCounter() == 3 && !getPattern.isFourButton()) {
 
-                    // This will find the SECOND page for the activities.
-                    if (randSettings.getFirstPage() == 4) {
-                        int nextPageVib = randSettings.getSecondPage();
-                        if (nextPageVib == 3) {
-                            Intent fourActivityIntent = new Intent(FourButtonCond.this, ButtonCond.class);
-                            startActivity(fourActivityIntent);
-                        } else if (nextPageVib == 5) {
-                            Intent fiveActivityIntent = new Intent(FourButtonCond.this, FiveButtonCond.class);
-                            startActivity(fiveActivityIntent);
-                        }
-                    }
-                    // This will find the THIRD page for the activities.
-                    else if (randSettings.getSecondPage() == 4) {
-                        int nextPageVib = randSettings.getThirdPage();
-                        if (nextPageVib == 3) {
-                            Intent fourActivityIntent = new Intent(FourButtonCond.this, ButtonCond.class);
-                            startActivity(fourActivityIntent);
-                        } else if (nextPageVib == 5) {
-                            Intent fiveActivityIntent = new Intent(FourButtonCond.this, FiveButtonCond.class);
-                            startActivity(fiveActivityIntent);
-                        }
-                    }
-                    // This will find the next different activity and move to that.
-                    else if (randSettings.getThirdPage() == 4) {
-                        Intent surveyIntent = new Intent(FourButtonCond.this, ButtonSurvey.class);
-                        startActivity(surveyIntent);
-                    }*/
-                }
+                                    getPattern.resetCounter();
+
+                                    AAHapticCommon.patternConditionCount++;
+                                    if (AAHapticCommon.patternConditionCount > 2) {
+                                        AAHapticCommon.shufflePatternList();
+                                        Intent surveyIntent = new Intent(AAInputButton.this, GestureSurvey.class);
+                                        startActivity(surveyIntent);
+                                        finish();
+                                    } else {
+                                        Intent intent = new Intent(AAInputButton.this, AAInputButton.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+
+
+                                }
+                            }
+                        });
+                        AlertDialog alert = builder.create();
+                        //Setting the title manually
+                        alert.setTitle(result);
+
+                        alert.show();
             }
         });
 

@@ -46,7 +46,7 @@ public class AAHapticMainPage extends AppCompatActivity {
         AAHapticCommon.shufflePatternList();
         AAHapticCommon.shuffleInputList();
 
-        String fileWriteString=0.0+","+"Main Page,"+ AAHapticCommon.dateTime()+"\n";
+        String fileWriteString="0.0"+","+"Main Page,"+ AAHapticCommon.dateTime()+"\n";
         AAHapticCommon.writeAnswerToFile(getApplicationContext(), fileWriteString);
 
         Log.e("StartingInputList",String.valueOf(AAHapticCommon.inputList));
@@ -76,62 +76,20 @@ public class AAHapticMainPage extends AppCompatActivity {
                     randSettings.shuffleActivity(); // {"Button", "Pattern", "Gesture"}
                     randSettings.shufflePageParams(); // {3, 4, 5}
                     int condition= AAHapticCommon.inputList.get(AAHapticCommon.inputConditionCount);
-
+                    //condition=3;
                     if (condition==1){
-                        Intent surveyIntent = new Intent(AAHapticMainPage.this, AAInputGesture.class);
+                        Intent surveyIntent = new Intent(AAHapticMainPage.this, TutorialGesture.class);
                         startActivity(surveyIntent);
                     }
                     if (condition==2){
-                        Intent surveyIntent = new Intent(AAHapticMainPage.this, AAInputPattern.class);
+                        Intent surveyIntent = new Intent(AAHapticMainPage.this, TutorialPattern.class);
                         startActivity(surveyIntent);
                     }
                     if (condition==3){
-                        Intent surveyIntent = new Intent(AAHapticMainPage.this, AAInputButton.class);
+                        Intent surveyIntent = new Intent(AAHapticMainPage.this, TutorialButton.class);
                         startActivity(surveyIntent);
                     }
-                    // First Activity has 3 vibrations:
-                    /*
-                    if (randSettings.getFirstPage() == 3) {
-                        Log.e("vibs","3");
-                        if (randSettings.getFirstActivity().matches("Button")) {
-                            Intent intent = new Intent(Participation.this, ButtonCond.class);
-                            startActivity(intent);
-                        } else if (randSettings.getFirstActivity().matches("Gesture")) {
-                            Intent intent = new Intent(Participation.this, ThreeGestureCond.class);
-                            startActivity(intent);
-                        } else if (randSettings.getFirstActivity().matches("Pattern")) {
-                            Intent intent = new Intent(Participation.this, ThreePatternCond.class);
-                            startActivity(intent);
-                        }
-                    }
-                    // First Activity has 4 vibrations:
-                    else if (randSettings.getFirstPage() == 4) {
-                        Log.e("vibs","4");
-                        if (randSettings.getFirstActivity().matches("Button")) {
-                            Intent intent = new Intent(Participation.this, FourButtonCond.class);
-                            startActivity(intent);
-                        } else if (randSettings.getFirstActivity().matches("Gesture")) {
-                            Intent intent = new Intent(Participation.this, FourGestureCond.class);
-                            startActivity(intent);
-                        } else if (randSettings.getFirstActivity().matches("Pattern")) {
-                            Intent intent = new Intent(Participation.this, FourPatternCond.class);
-                            startActivity(intent);
-                        }
-                    }
-                    // First Activity has 5 vibrations:
-                    else if (randSettings.getFirstPage() == 5) {
-                        Log.e("vibs","5");
-                        if (randSettings.getFirstActivity().matches("Button")) {
-                            Intent intent = new Intent(Participation.this, FiveButtonCond.class);
-                            startActivity(intent);
-                        } else if (randSettings.getFirstActivity().matches("Gesture")) {
-                            Intent intent = new Intent(Participation.this, FiveGestureCond.class);
-                            startActivity(intent);
-                        } else if (randSettings.getFirstActivity().matches("Pattern")) {
-                            Intent intent = new Intent(Participation.this, FivePatternCond.class);
-                            startActivity(intent);
-                        }
-                    }*/
+
                 }
             }
         });

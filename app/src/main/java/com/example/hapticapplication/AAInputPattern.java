@@ -3,9 +3,11 @@ package com.example.hapticapplication;
 import static java.lang.String.valueOf;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,6 +37,7 @@ public class AAInputPattern extends AppCompatActivity {
     AADataGetPattern getPattern = AADataGetPattern.getInstance();
     Vibrator vibrator;
     VibrationEffect generateVibration;
+    AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +62,7 @@ public class AAInputPattern extends AppCompatActivity {
         Button nextButton = findViewById(R.id.threePatternNextButton);
         Button resetButton = findViewById(R.id.threePatternResettButton);
         textAnswer = findViewById(R.id.dotDashAnswer);
-
+        builder=new AlertDialog.Builder(this);
         TextView inputTV=findViewById(R.id.tvinput);
 
         vibrator= (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -73,7 +76,7 @@ public class AAInputPattern extends AppCompatActivity {
         patternCondition= AAHapticCommon.patternList.get(AAHapticCommon.patternConditionCount);
 
         Log.e("PattersGesture",String.valueOf(AAHapticCommon.patternList));
-        counterTV.setText("Trial No.: "+String.valueOf(count)+"/27");//+String.valueOf(patternCondition));
+        counterTV.setText("Trial No.: "+String.valueOf(count)+"/27 ("+String.valueOf(patternCondition)+")");//+String.valueOf(patternCondition));
 
         if (patternCondition==3) {
             Log.e("PatternTest", String.valueOf(patternCondition));
@@ -180,69 +183,45 @@ public class AAInputPattern extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                writeAns("2.2","final",getPattern.convertToDotDash(userCreatedPattern),"Pattern");
-                // Same activity to be repeated again
-                if ((getPattern.getCounter() == 1 || getPattern.getCounter() == 2) && !getPattern.isThreePattern()) {
-                    getPattern.incrementCounter();
-                    Intent sameActivity = new Intent(AAInputPattern.this, AAInputPattern.class);
-                    startActivity(sameActivity);
-                    finish();
+                writeAns("5.2","final",getPattern.convertToDotDash(userCreatedPattern),"Pattern");
+                String result="Incorrect";
+                if (answerPattern.toString().equals(getPattern.convertToDotDash(userCreatedPattern))){
+                    result="Correct";
                 }
-                // Move on to a different activity
-                else if (getPattern.getCounter() == 3 && !getPattern.isThreePattern()) {
-                    getPattern.resetCounter();
 
-                    AAHapticCommon.patternConditionCount++;
-                    if (AAHapticCommon.patternConditionCount>2){
-                        AAHapticCommon.shufflePatternList();
-                        Intent surveyIntent = new Intent(AAInputPattern.this, GestureSurvey.class);
-                        startActivity(surveyIntent);
-                        finish();
-                    }else{
-                        Intent intent = new Intent(AAInputPattern.this, AAInputPattern.class);
-                        startActivity(intent);
-                        finish();
-                    }
+                builder.setMessage("Required: " + getPattern.convertPatternToText(answerPattern.toString()) + "\nYou entered: " + getPattern.convertPatternToText(getPattern.convertToDotDash(userCreatedPattern)))
+                        .setPositiveButton("Okay!", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
 
+                                // Same activity to be repeated again
+                                if ((getPattern.getCounter() == 1 || getPattern.getCounter() == 2) && !getPattern.isThreePattern()) {
+                                    getPattern.incrementCounter();
+                                    Intent sameActivity = new Intent(AAInputPattern.this, AAInputPattern.class);
+                                    startActivity(sameActivity);
+                                    finish();
+                                }
+                                // Move on to a different activity
+                                else if (getPattern.getCounter() == 3 && !getPattern.isThreePattern()) {
+                                    getPattern.resetCounter();
 
-                    /*getPattern.setThreePattern(true);
+                                    AAHapticCommon.patternConditionCount++;
+                                    if (AAHapticCommon.patternConditionCount > 2) {
+                                        AAHapticCommon.shufflePatternList();
+                                        Intent surveyIntent = new Intent(AAInputPattern.this, GestureSurvey.class);
+                                        startActivity(surveyIntent);
+                                        finish();
+                                    } else {
+                                        Intent intent = new Intent(AAInputPattern.this, AAInputPattern.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }
+                            }});
+                AlertDialog alert = builder.create();
+                //Setting the title manually
+                alert.setTitle(result);
 
-                    // Logic for different activities transitioning
-                    String checkAnswer = getPattern.convertToDotDash(userCreatedPattern);
-                    if (checkAnswer.matches(answerPattern)) {
-                        textAnswer.setText("Correct Answer");
-                    } else {
-                        textAnswer.setText("Wrong Answer");
-                    }
-
-                    // This will find the SECOND page of the same activity.
-                    if (randSettings.getFirstPage() == 3) {
-                        int nextPageVib = randSettings.getSecondPage();
-                        if (nextPageVib == 4) {
-                            Intent fourActivityIntent = new Intent(ThreePatternCond.this, FourPatternCond.class);
-                            startActivity(fourActivityIntent);
-                        } else if (nextPageVib == 5) {
-                            Intent fiveActivityIntent = new Intent(ThreePatternCond.this, FivePatternCond.class);
-                            startActivity(fiveActivityIntent);
-                        }
-                    }
-                    // This will find the THIRD page of the same activity.
-                    else if (randSettings.getSecondPage() == 3) {
-                        int nextPageVib = randSettings.getThirdPage();
-                        if (nextPageVib == 4) {
-                            Intent fourActivityIntent = new Intent(ThreePatternCond.this, FourPatternCond.class);
-                            startActivity(fourActivityIntent);
-                        } else if (nextPageVib == 5) {
-                            Intent fiveActivityIntent = new Intent(ThreePatternCond.this, FivePatternCond.class);
-                            startActivity(fiveActivityIntent);
-                        }
-                    }
-                    // This will change the activity
-                    else if (randSettings.getThirdPage() == 3) {
-                        Intent surveyIntent = new Intent(ThreePatternCond.this, PatternSurvey.class);
-                        startActivity(surveyIntent);
-                    }*/
-                }
+                alert.show();
             }
         });
 
