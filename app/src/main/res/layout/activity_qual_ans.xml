@@ -10,14 +10,15 @@
         android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:accessibilityTraversalBefore="@id/mental"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="Qualitative Feedback"
         android:textColor="@color/black"
         android:textSize="32sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline1"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -75,7 +76,7 @@
         app:layout_constraintGuide_percent=".90" />
 
 
-    <TextView
+    <!--<TextView
         android:id="@+id/accessibility"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -129,24 +130,25 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline1"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline14"  />
+        app:layout_constraintTop_toTopOf="@+id/guideline14"  /> -->
 
 
     <Button
         android:id="@+id/submit"
         android:layout_width="346dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="40dp"
         android:background="#3C3A3A"
         android:fontFamily="sans-serif"
         android:text="Submit"
         android:textColor="#ffffff"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline1"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline17" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <!-- <EditText
         android:id="@+id/q1"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -205,5 +207,5 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline17"
         app:layout_constraintEnd_toStartOf="@+id/guideline1"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/othertv" />
+        app:layout_constraintTop_toBottomOf="@+id/othertv" /> -->
 </androidx.constraintlayout.widget.ConstraintLayout>
