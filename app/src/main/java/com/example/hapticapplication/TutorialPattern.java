@@ -41,7 +41,6 @@ public class TutorialPattern extends AppCompatActivity {
         setContentView(R.layout.tutorial_pattern);
 
         // Getting the instance for the patterns and vibration settings
-        AADataRandSettings randSettings = AADataRandSettings.getInstance();
         vibSettings vibSettings = com.example.hapticapplication.vibSettings.getInstance();
 
 

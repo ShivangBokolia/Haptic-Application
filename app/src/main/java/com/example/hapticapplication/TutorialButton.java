@@ -48,7 +48,6 @@ public class TutorialButton extends AppCompatActivity {
         List<String> selectedAnswer = new ArrayList<>();
 
         // Getting the instance for the patterns and vibration settings
-        AADataRandSettings randSettings = AADataRandSettings.getInstance();
         vibSettings vibSettings = com.example.hapticapplication.vibSettings.getInstance();
 
         // Setting the timings for short vibrations and long vibrations

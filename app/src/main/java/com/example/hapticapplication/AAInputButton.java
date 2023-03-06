@@ -50,7 +50,6 @@ public class AAInputButton extends AppCompatActivity {
         List<String> selectedAnswer = new ArrayList<>();
 
         // Getting the instance for the patterns and vibration settings
-        AADataRandSettings randSettings = AADataRandSettings.getInstance();
         vibSettings vibSettings = com.example.hapticapplication.vibSettings.getInstance();
 
         // Setting the timings for short vibrations and long vibrations
@@ -238,7 +237,6 @@ public class AAInputButton extends AppCompatActivity {
 
                                     AAHapticCommon.patternConditionCount++;
                                     if (AAHapticCommon.patternConditionCount > 2) {
-                                        AAHapticCommon.shufflePatternList();
                                         Intent surveyIntent = new Intent(AAInputButton.this, GestureSurvey.class);
                                         startActivity(surveyIntent);
                                         finish();

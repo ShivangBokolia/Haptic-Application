@@ -37,16 +37,19 @@ public class AAHapticMainPage extends AppCompatActivity {
 
         idText.setText(AAHapticCommon.user);
 
-        AADataRandSettings randSettings = AADataRandSettings.getInstance();
 
         // randomize the patterns list:
         AADataGetPattern getPattern = AADataGetPattern.getInstance();
         getPattern.randomizeLists();
 
-        AAHapticCommon.shufflePatternList();
-        AAHapticCommon.shuffleInputList();
+        if (!AAHapticCommon.shuffled) {
+            AAHapticCommon.shufflePatternList();
+            AAHapticCommon.shuffleInputList();
+            AAHapticCommon.shuffled = true;
+        }
 
-        String fileWriteString="0.0"+","+"Main Page,"+ AAHapticCommon.dateTime()+"\n";
+        String fileWriteString="0.0"+","+"Main Page2,"+ AAHapticCommon.dateTime()+"\n";
+        AAHapticCommon.writeAnswerToFile(getApplicationContext(), fileWriteString);
         AAHapticCommon.writeAnswerToFile(getApplicationContext(), fileWriteString);
 
         Log.e("StartingInputList",String.valueOf(AAHapticCommon.inputList));
@@ -57,9 +60,6 @@ public class AAHapticMainPage extends AppCompatActivity {
                     AAHapticCommon.user=idText.getText().toString().trim();
                     AAHapticCommon.writeAnswerToFile(getApplicationContext(),String.valueOf(id));
                     // Create the number of params for each of the pages:
-                    AADataRandSettings randSettings = AADataRandSettings.getInstance();
-                    randSettings.shufflePageParams();
-                    Log.e("test","HomePage");
                     Intent intent = new Intent(AAHapticMainPage.this, AAHapticMainSettings.class);
                     startActivity(intent);
 
@@ -71,10 +71,10 @@ public class AAHapticMainPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!idText.getText().toString().trim().matches("") || !id.matches("")) {
+                    AAHapticCommon.user=idText.getText().toString().trim();
+                    AAHapticCommon.writeAnswerToFile(getApplicationContext(),String.valueOf(id));
 
                     // Shuffling the activities and the vibration number for each page
-                    randSettings.shuffleActivity(); // {"Button", "Pattern", "Gesture"}
-                    randSettings.shufflePageParams(); // {3, 4, 5}
                     int condition= AAHapticCommon.inputList.get(AAHapticCommon.inputConditionCount);
                     //condition=3;
                     if (condition==1){
@@ -97,6 +97,7 @@ public class AAHapticMainPage extends AppCompatActivity {
         sendDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AAHapticCommon.user=idText.getText().toString().trim();
                 sendEmail();
                 //Intent intent = new Intent(Participation.this, TutorialButton.class);
                 //startActivity(intent);

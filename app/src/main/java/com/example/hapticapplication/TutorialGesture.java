@@ -46,7 +46,6 @@ public class TutorialGesture extends AppCompatActivity {
         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         Log.e("view","threeGesture");
         // Getting the instance for the patterns and vibration settings
-        AADataRandSettings randSettings = AADataRandSettings.getInstance();
         vibSettings vibSettings = com.example.hapticapplication.vibSettings.getInstance();
 
         // Setting the timings for short vibrations and long vibrations

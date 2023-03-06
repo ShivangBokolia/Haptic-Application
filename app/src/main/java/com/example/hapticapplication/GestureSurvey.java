@@ -39,11 +39,17 @@ public class GestureSurvey extends AppCompatActivity {
                         +"\n";
                 AAHapticCommon.writeAnswerToFile(getApplicationContext(),fileWriteString);
                 AAHapticCommon.inputConditionCount++;
+                Log.e("SURVEYInputList",String.valueOf(AAHapticCommon.inputList));
+                Log.e("SURVEYConditionCount",String.valueOf(AAHapticCommon.inputConditionCount));
+
+                Log.e("StartingInputList",String.valueOf(AAHapticCommon.patternList));
+
                 if (AAHapticCommon.inputConditionCount>2){
                     //go to Qual answers
                     Intent surveyIntent = new Intent(GestureSurvey.this, AAHapticMainQualAns.class);
                     startActivity(surveyIntent);
                 }else{
+                    AAHapticCommon.shufflePatternList();
                     AAHapticCommon.patternConditionCount=0;
                     condition= AAHapticCommon.inputList.get(AAHapticCommon.inputConditionCount);
                     if (condition==1){
@@ -52,7 +58,7 @@ public class GestureSurvey extends AppCompatActivity {
                         finish();
                     }
                     if (condition==2){
-                        Intent surveyIntent = new Intent(GestureSurvey.this, TutorialButton.class);
+                        Intent surveyIntent = new Intent(GestureSurvey.this, TutorialPattern.class);
                         startActivity(surveyIntent);
                         finish();
                     }

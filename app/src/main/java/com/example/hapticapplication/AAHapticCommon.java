@@ -35,6 +35,7 @@ public class AAHapticCommon {
     static ArrayList<Integer> inputList=new ArrayList<Integer>() {{add(1); add(2); add(3);}};
     static ArrayList<Integer> patternList=new ArrayList<Integer>() {{add(3); add(4); add(5);}};
     static Long pauseLength=500L;
+    static boolean shuffled=false;
 
     public static void shuffleInputList(){
 

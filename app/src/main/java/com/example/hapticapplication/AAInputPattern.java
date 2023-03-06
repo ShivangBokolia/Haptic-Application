@@ -48,7 +48,6 @@ public class AAInputPattern extends AppCompatActivity {
         Log.e("view","threePattern");
 
         // Getting the instance for the patterns and vibration settings
-        AADataRandSettings randSettings = AADataRandSettings.getInstance();
         vibSettings vibSettings = com.example.hapticapplication.vibSettings.getInstance();
 
         // Setting the timings for short vibrations and long vibrations
@@ -206,7 +205,6 @@ public class AAInputPattern extends AppCompatActivity {
 
                                     AAHapticCommon.patternConditionCount++;
                                     if (AAHapticCommon.patternConditionCount > 2) {
-                                        AAHapticCommon.shufflePatternList();
                                         Intent surveyIntent = new Intent(AAInputPattern.this, GestureSurvey.class);
                                         startActivity(surveyIntent);
                                         finish();
