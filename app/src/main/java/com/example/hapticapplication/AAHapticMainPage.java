@@ -32,7 +32,7 @@ public class AAHapticMainPage extends AppCompatActivity {
         idText = findViewById(R.id.partID);
         settingsButton = findViewById(R.id.settings);
         mainStudyButton = findViewById(R.id.mainStudy);
-        tutorialButton = findViewById(R.id.tutorial);
+        //tutorialButton = findViewById(R.id.tutorial);
         sendDataButton=findViewById(R.id.sendData);
 
         idText.setText(AAHapticCommon.user);
