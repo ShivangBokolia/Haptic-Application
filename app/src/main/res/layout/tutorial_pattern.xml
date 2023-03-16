@@ -11,236 +11,119 @@
         android:id="@+id/dotDashAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="Dot Dash Tutorial"
         android:textColor="@color/black"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline125"
-        app:layout_constraintEnd_toStartOf="@+id/guideline139"
-        app:layout_constraintStart_toStartOf="@+id/guideline138"
-        app:layout_constraintTop_toTopOf="@+id/guideline124" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvCounter"
         android:layout_width="347dp"
         android:layout_height="37dp"
+        android:layout_marginTop="20dp"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline127"
-        app:layout_constraintEnd_toStartOf="@+id/guideline139"
-        app:layout_constraintStart_toStartOf="@+id/guideline138"
-        app:layout_constraintTop_toTopOf="@+id/guideline126" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dotDashAnswer" />
 
     <Button
         android:id="@+id/threePatternGenButton"
         android:layout_width="346dp"
         android:layout_height="60dp"
+        android:layout_marginTop="16dp"
         android:text="Generate Pattern"
         android:textSize="24sp"
         app:backgroundTint="#4D3B00"
-        app:layout_constraintBottom_toTopOf="@+id/guideline129"
-        app:layout_constraintEnd_toStartOf="@+id/guideline139"
-        app:layout_constraintStart_toStartOf="@+id/guideline138"
-        app:layout_constraintTop_toTopOf="@+id/guideline128" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCounter" />
 
     <Button
         android:id="@+id/threeDotButton"
-        android:layout_width="150dp"
+        android:layout_width="163dp"
         android:layout_height="225dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
         android:text="Dot"
         android:textSize="24sp"
         app:backgroundTint="#8F6D00"
-        app:layout_constraintBottom_toTopOf="@+id/guideline133"
-        app:layout_constraintEnd_toStartOf="@+id/guideline140"
-        app:layout_constraintStart_toStartOf="@+id/guideline138"
-        app:layout_constraintTop_toTopOf="@+id/guideline132" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvinput" />
 
     <Button
         android:id="@+id/threeDashButton"
-        android:layout_width="150dp"
+        android:layout_width="163dp"
         android:layout_height="225dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="40dp"
         android:text="Dash"
         android:textSize="24sp"
         app:backgroundTint="#8F6D00"
-        app:layout_constraintBottom_toTopOf="@+id/guideline133"
-        app:layout_constraintEnd_toStartOf="@+id/guideline139"
-        app:layout_constraintStart_toStartOf="@+id/guideline141"
-        app:layout_constraintTop_toTopOf="@+id/guideline132" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/threeDotButton"
+        app:layout_constraintTop_toBottomOf="@+id/tvinput" />
 
     <Button
         android:id="@+id/threePatternNextButton"
-        android:layout_width="150dp"
+        android:layout_width="163dp"
         android:layout_height="60dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="28dp"
         android:text="Next"
         android:textSize="24sp"
         app:backgroundTint="#6B5200"
-        app:layout_constraintBottom_toTopOf="@+id/guideline135"
-        app:layout_constraintEnd_toStartOf="@+id/guideline139"
-        app:layout_constraintStart_toStartOf="@+id/guideline141"
-        app:layout_constraintTop_toTopOf="@+id/guideline134" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/threePatternResettButton"
+        app:layout_constraintTop_toBottomOf="@+id/threeDashButton" />
 
     <Button
         android:id="@+id/threePatternResettButton"
-        android:layout_width="150dp"
+        android:layout_width="163dp"
         android:layout_height="60dp"
+        android:layout_marginTop="28dp"
         android:text="Reset"
         android:textSize="24sp"
         app:backgroundTint="#6B5200"
-        app:layout_constraintBottom_toTopOf="@+id/guideline135"
-        app:layout_constraintEnd_toStartOf="@+id/guideline140"
-        app:layout_constraintStart_toStartOf="@+id/guideline138"
-        app:layout_constraintTop_toTopOf="@+id/guideline134" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/threeDashButton" />
 
     <TextView
         android:id="@+id/tvinput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Input"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline131"
-        app:layout_constraintEnd_toStartOf="@+id/guideline139"
-        app:layout_constraintStart_toStartOf="@+id/guideline138"
-        app:layout_constraintTop_toTopOf="@+id/guideline130" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/threePatternGenButton" />
 
     <Button
         android:id="@+id/readyPattern"
         android:layout_width="346dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="40dp"
         android:text="Ready"
         android:textSize="24sp"
         app:backgroundTint="#6B5200"
-        app:layout_constraintBottom_toTopOf="@+id/guideline137"
-        app:layout_constraintEnd_toStartOf="@+id/guideline139"
-        app:layout_constraintStart_toStartOf="@+id/guideline138"
-        app:layout_constraintTop_toTopOf="@+id/guideline136" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline124"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.054719564" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline125"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.11627907" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline126"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.14500684" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline127"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.19562243" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline128"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.21614227" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline129"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.29822162" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline130"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3269494" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline131"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.37072504" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline132"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.40355676" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline133"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7113543" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline134"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.751026" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline135"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8331053" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline136"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8632011" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline137"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.94528043" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline138"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.07785888" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline139"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.92214113" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline140"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.47445256" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline141"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.50851583" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
