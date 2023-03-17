@@ -26,11 +26,11 @@
         <entry key="app/src/main/res/layout/activity_five_button_cond.xml" value="0.15677083333333333" />
         <entry key="app/src/main/res/layout/activity_five_gesture_cond.xml" value="0.15677083333333333" />
         <entry key="app/src/main/res/layout/activity_five_pattern_cond.xml" value="0.15677083333333333" />
-        <entry key="app/src/main/res/layout/activity_four_button_cond.xml" value="0.10958404541015626" />
+        <entry key="app/src/main/res/layout/activity_four_button_cond.xml" value="0.2150756835937499" />
         <entry key="app/src/main/res/layout/activity_four_gesture_condition.xml" value="0.31875" />
         <entry key="app/src/main/res/layout/activity_four_pattern_cond.xml" value="0.15677083333333333" />
         <entry key="app/src/main/res/layout/activity_gesture.xml" value="0.21380004882812503" />
-        <entry key="app/src/main/res/layout/activity_gesture_survey.xml" value="0.3498616536458334" />
+        <entry key="app/src/main/res/layout/activity_gesture_survey.xml" value="0.2808934529622396" />
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.15677083333333333" />
         <entry key="app/src/main/res/layout/activity_pattern_survey.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_qual_ans.xml" value="0.3363616943359375" />
@@ -40,7 +40,7 @@
         <entry key="app/src/main/res/layout/activity_tutorial_button.xml" value="0.31875" />
         <entry key="app/src/main/res/layout/activity_tutorial_gesture.xml" value="0.18614130434782608" />
         <entry key="app/src/main/res/layout/participation.xml" value="0.3093266805013023" />
-        <entry key="app/src/main/res/layout/tutorial_button.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/tutorial_button.xml" value="0.47847747802734375" />
         <entry key="app/src/main/res/layout/tutorial_gesture.xml" value="0.3131149291992187" />
         <entry key="app/src/main/res/layout/tutorial_pattern.xml" value="0.36850433349609363" />
         <entry key="app/src/main/res/xml/filepaths.xml" value="0.15677083333333333" />

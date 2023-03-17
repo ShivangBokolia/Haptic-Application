@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Buttons Condition"
         android:textColor="@color/black"
-        android:textSize="34sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline41"
         app:layout_constraintEnd_toStartOf="@+id/guideline57"
@@ -56,6 +56,20 @@
         app:layout_constraintStart_toStartOf="@+id/guideline56"
         app:layout_constraintTop_toTopOf="@+id/guideline48" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline48"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.39" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline49"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.52" />
+
     <Button
         android:id="@+id/fourOpt2Button"
         android:layout_width="346dp"
@@ -68,6 +82,34 @@
         app:layout_constraintStart_toStartOf="@+id/guideline56"
         app:layout_constraintTop_toTopOf="@+id/guideline50"
         app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline50"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline51"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.68" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline52"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.71" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline53"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.84" />
 
     <Button
         android:id="@+id/fourOpt3Button"
@@ -99,7 +141,7 @@
         android:layout_height="wrap_content"
         android:text="Input"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline47"
         app:layout_constraintEnd_toStartOf="@+id/guideline57"
         app:layout_constraintStart_toStartOf="@+id/guideline56"
@@ -160,48 +202,6 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.37072504" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline48"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.41" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline49"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.47879618" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline50"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.502052" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline51"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.56771547" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline52"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5896033" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline53"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65526676" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline54"

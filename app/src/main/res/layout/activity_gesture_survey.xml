@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="How mentally demanding was it?"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline146" />
@@ -41,7 +41,7 @@
         android:layout_marginTop="16dp"
         android:text="How physically demanding was it?"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/a1" />
@@ -69,7 +69,7 @@
         android:layout_marginTop="16dp"
         android:text="How hurried or rushed was it?"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
         android:layout_marginTop="16dp"
         android:text="How hard did you work to accomplish it?"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +127,7 @@
         android:layout_marginTop="16dp"
         android:text="How frustrating was it?"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -176,7 +176,7 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="369dp"
+        android:layout_width="310dp"
         android:layout_height="40dp"
         android:text="Enter values between 0 for very low and 20 for very high"
         android:textAlignment="center"
@@ -184,7 +184,6 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline144"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline145" />
 
@@ -207,7 +206,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15321477" />
+        app:layout_constraintGuide_percent="0.16" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline145"

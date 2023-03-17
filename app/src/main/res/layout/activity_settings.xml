@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Settings Page"
         android:textColor="@color/black"
-        android:textSize="34sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline74"
         app:layout_constraintEnd_toStartOf="@+id/guideline86"
@@ -22,13 +22,13 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="365dp"
-        android:layout_height="65dp"
+        android:layout_width="310dp"
+        android:layout_height="74dp"
         android:text="Choose the speed of the vibration from 1 to 100:"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline76"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline77"
         app:layout_constraintEnd_toStartOf="@+id/guideline86"
         app:layout_constraintStart_toStartOf="@+id/guideline85"
         app:layout_constraintTop_toTopOf="@+id/guideline75" />
@@ -110,7 +110,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.24897401" />
+        app:layout_constraintGuide_percent="0.28" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline77"
