@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class AAHapticCommon {
-    static String user="Participant_08";
+    static String user="Participant_09";
 
     static Context context;
     static private Uri paths;
