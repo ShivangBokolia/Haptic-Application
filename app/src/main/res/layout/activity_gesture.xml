@@ -61,7 +61,7 @@
         android:layout_width="346dp"
         android:layout_height="300dp"
         android:text="Hold for Input"
-        android:textSize="14sp"
+        android:textSize="20sp"
         app:backgroundTint="#208831"
         app:layout_constraintBottom_toTopOf="@+id/guideline15"
         app:layout_constraintEnd_toStartOf="@+id/guideline20"
@@ -82,11 +82,12 @@
 
     <TextView
         android:id="@+id/tvinput"
+        android:inputType="textPassword"
+        android:hint="Pattern Input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Input"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline12"
         app:layout_constraintEnd_toStartOf="@+id/guideline20"

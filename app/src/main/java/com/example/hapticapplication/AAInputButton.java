@@ -72,7 +72,7 @@ public class AAInputButton extends AppCompatActivity {
 
         TextView counterTV=findViewById(R.id.tvCounter);
         int count=getPattern.getCounter()+3*(AAHapticCommon.inputConditionCount*3+ AAHapticCommon.patternConditionCount);
-        counterTV.setText("Trial No.: "+String.valueOf(count)+"/27 ("+String.valueOf(patternCondition)+")");//+String.valueOf(patternCondition));
+        counterTV.setText("");//+String.valueOf(patternCondition));
 
 
         if (patternCondition==3) {

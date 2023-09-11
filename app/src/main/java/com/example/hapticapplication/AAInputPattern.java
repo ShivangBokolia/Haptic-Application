@@ -75,7 +75,7 @@ public class AAInputPattern extends AppCompatActivity {
         patternCondition= AAHapticCommon.patternList.get(AAHapticCommon.patternConditionCount);
 
         Log.e("PattersGesture",String.valueOf(AAHapticCommon.patternList));
-        counterTV.setText("Trial No.: "+String.valueOf(count)+"/27 ("+String.valueOf(patternCondition)+")");//+String.valueOf(patternCondition));
+        counterTV.setText("");//+String.valueOf(patternCondition));
 
         if (patternCondition==3) {
             Log.e("PatternTest", String.valueOf(patternCondition));

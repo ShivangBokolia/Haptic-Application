@@ -71,7 +71,7 @@ public class AAInputGesture extends AppCompatActivity {
 
         Log.e("PattersGesture",String.valueOf(AAHapticCommon.patternList));
 
-        counterTV.setText("Trial No.: "+String.valueOf(count)+"/27 ("+String.valueOf(patternCondition)+")");//+String.valueOf(patternCondition));
+        counterTV.setText("");//+String.valueOf(patternCondition));
 
 
         if (patternCondition==3){
