@@ -32,6 +32,18 @@
         app:layout_constraintStart_toStartOf="@+id/guideline19"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
+    <TextView
+        android:id="@+id/tvCounter"
+        android:layout_width="347dp"
+        android:layout_height="37dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
+        app:layout_constraintEnd_toStartOf="@+id/guideline20"
+        app:layout_constraintStart_toStartOf="@+id/guideline19"
+        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+
     <Button
         android:id="@+id/threeGestureGenButton"
         android:layout_width="346dp"
@@ -49,7 +61,7 @@
         android:layout_width="346dp"
         android:layout_height="300dp"
         android:text="Hold for Input"
-        android:textSize="20sp"
+        android:textSize="14sp"
         app:backgroundTint="#208831"
         app:layout_constraintBottom_toTopOf="@+id/guideline15"
         app:layout_constraintEnd_toStartOf="@+id/guideline20"
@@ -74,7 +86,7 @@
         android:layout_height="wrap_content"
         android:text="Input"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline12"
         app:layout_constraintEnd_toStartOf="@+id/guideline20"
